@@ -1,0 +1,31 @@
+{
+  "name": "javascript-to-do-list",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --mode production",
+    "dev": "webpack --watch src/* --mode development",
+    "server": "live-sever",
+    "scss": "node-sass --watch scss/main.scss -o css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Torres-ssf/javascript-to-do-list.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Torres-ssf/javascript-to-do-list/issues"
+  },
+  "homepage": "https://github.com/Torres-ssf/javascript-to-do-list#readme",
+  "devDependencies": {
+    "live-server": "^1.2.1",
+    "node-sass": "^4.12.0",
+    "nodemon": "^1.19.3",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.9"
+  }
+}
