@@ -8,7 +8,8 @@
     "build": "webpack --mode production",
     "dev": "webpack --watch src/* --mode development",
     "server": "live-server",
-    "scss": "node-sass --watch scss/main.scss -o css"
+    "scss": "node-sass --watch scss/main.scss -o css",
+    "tsc": "tsc --watch src/*.ts"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,7 @@
   },
   "homepage": "https://github.com/Torres-ssf/javascript-to-do-list#readme",
   "devDependencies": {
+    "eslint": "^6.5.1",
     "live-server": "^1.2.1",
     "node-sass": "^4.12.0",
     "nodemon": "^1.19.3",
@@ -29,6 +31,7 @@
     "webpack-cli": "^3.3.9"
   },
   "dependencies": {
+    "ispiredb.js": "^1.0.3",
     "sparetime.js": "^1.0.5"
   }
 }

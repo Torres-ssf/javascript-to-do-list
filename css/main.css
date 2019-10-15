@@ -1,2 +1,30 @@
 ul {
   list-style-type: none; }
+
+.modal {
+  background-color: rgba(128, 128, 128, 0.48);
+  display: none;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  text-align: center;
+  left: 0; }
+  .modal .modal-content {
+    padding: .5em;
+    background-color: lightcoral;
+    width: 60%;
+    margin: 6em auto;
+    height: 40em; }
+    .modal .modal-content .form {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 60%;
+      height: 30em;
+      margin: 0 auto; }
+      .modal .modal-content .form input {
+        height: .5em;
+        border-radius: 2em;
+        padding: 1em;
+        outline: none; }
