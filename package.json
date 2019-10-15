@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode production",
     "dev": "webpack --watch src/* --mode development",
-    "server": "live-sever",
+    "server": "live-server",
     "scss": "node-sass --watch scss/main.scss -o css"
   },
   "repository": {
@@ -27,5 +27,8 @@
     "nodemon": "^1.19.3",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.9"
+  },
+  "dependencies": {
+    "sparetime.js": "^1.0.5"
   }
 }
