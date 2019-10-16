@@ -2,6 +2,7 @@ ul {
   list-style-type: none; }
 
 .modal {
+  display: none;
   background-color: rgba(128, 128, 128, 0.48);
   height: 100%;
   width: 100%;
@@ -15,6 +16,9 @@ ul {
     width: 60%;
     margin: 6em auto;
     height: 40em; }
+    .modal .modal-content #modal-close {
+      float: right;
+      color: red; }
     .modal .modal-content .form {
       display: flex;
       flex-direction: column;
@@ -37,3 +41,7 @@ ul {
         padding: 1em; }
       .modal .modal-content .form div input {
         height: 1em; }
+
+.complete {
+  text-decoration: line-through;
+  color: red; }

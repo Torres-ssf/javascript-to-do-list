@@ -1,5 +1,5 @@
 import spare from "sparetime.js";
-import { ListItem, HandleForm } from "./components/TodoComponets";
+import {ListItem, HandleForm, showModal, UpdateForm} from "./components/TodoComponets";
 
 import IspireDb from "ispiredb.js/src/ispiredb";
 spare();
@@ -63,6 +63,7 @@ export class Todo {
   }
 }
 
+// test Todo
 const list = new Todo(
   "New list",
   "A nice and awesome list",
@@ -71,9 +72,9 @@ const list = new Todo(
   "Remember to finish Microverse",
   false
 );
-console.log(list.dueDate);
 
-console.log();
+
+// Database setup ----------------------
 
 const todoDb = new IspireDb();
 todoDb.setup(
@@ -87,11 +88,20 @@ todoDb.setup(
   "notes",
   "complete"
 );
+// ------------------------------
+
+
+
+
+// Db dummy test data -------------------------------
 
 todoDb.create(list);
-todoDb.find(1, data => {
-  // console.dir(data)
-});
+// todoDb.find(1, data => {
+//   console.dir(data)
+// });
+
+// ------------------------------------------------
+
 
 const Gui = (() => {
   const displayAllToDos = () => {
@@ -99,25 +109,77 @@ const Gui = (() => {
     parent.html("");
     todoDb.all(data => {
       data.map((todo, index) => {
+
+        // update button --------------------------------
+        let updateButton = Spare.create('button')
+            .attr('class','update').attr('id', `update-${todo.id}`)
+            .html('update').element;
+            updateButton.onclick = () => {
+              showModal(`update-${todo.id}`);
+              UpdateForm(todo,todoDb);
+              // todoDb.find(1, data => {
+              //        console.dir(data)
+              //         });
+            };
+        // ---------------------------------------------------
+
+
+        // Delete button --------------------------------
         let button = Spare.create("button")
           .attr("class", "delete")
           .html("Delete").element;
         button.onclick = element => {
-          console.info("Yeah this works");
-        };
+           deleteTodo(todo);
 
-        parent.append(ListItem({ todo: todo, index: index }));
-        Spare.sel(`#todo-${index}`).append(button);
+        };
+        // ------------------------------------------------------
+
+
+        parent.append(ListItem({ todo: todo, index: index}));
+        Spare.sel(`#todo-${index}`).append(button,updateButton)
       });
     });
-    console.log('display all todos')
   };
 
+  const deleteTodo = (props) =>{
+    todoDb.destroy(props.id);
+    Gui.displayAllToDos();
+  };
+
+
+
+
   return {
-    displayAllToDos
+    displayAllToDos,
   };
 })();
 
-// Gui.displayAllToDos();
 
-HandleForm(Gui.displayAllToDos());
+Gui.displayAllToDos();
+
+
+HandleForm(data => {
+  todoDb.create(data);
+  Gui.displayAllToDos()
+});
+
+let dBtn = Spare.sel("#master-delete").element;
+
+
+dBtn.onclick = () => {
+
+ if( confirm("Do you really really really want to do this? It can be the end or you!!!")){
+   todoDb.destroyAll(0);
+   setTimeout(()=>{
+     Gui.displayAllToDos()
+
+   },1);
+
+ };
+
+};
+
+showModal('show-form');
+
+
+
