@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/index.js");
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -170,11 +170,11 @@ eval("var g;\n\n// This works in non-strict mode\ng = (function() {\n\treturn th
 /*!*****************************************!*\
   !*** ./src/components/TodoComponets.js ***!
   \*****************************************/
-/*! exports provided: ListItem */
+/*! exports provided: ListItem, HandleForm */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"ListItem\", function() { return ListItem; });\n\n\nconst  ListItem = (obj) =>{\n    return Spare.create(\"li\")\n        .html(\n            `<h4 id=\"todo-${obj.index}\">Title: ${obj.todo._title}\n              <span>Priority: ${obj.todo._priority}</span>\n               <input type=\"checkbox\">\n              </h4>\n          <div>\n            <p>Description: ${obj.todo._description}</p>\n            <p>Due <time datetime=\"2019-10-15\">Date: ${obj.todo._date}</time></p>\n            <article>Notes: ${obj.todo._notes}</article>\n          </div>`\n        ).attr(\"data-todo-index\", obj.index).element;\n\n};\n\n\n\n\n\n//# sourceURL=webpack:///./src/components/TodoComponets.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"ListItem\", function() { return ListItem; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"HandleForm\", function() { return HandleForm; });\n\n\nconst ListItem = (obj) => {\n  return Spare.create(\"li\")\n    .html(\n      `<h4 id=\"todo-${obj.index}\">Title: ${obj.todo._title}\n              <span>Priority: ${obj.todo._priority}</span>\n               <input type=\"checkbox\">\n              </h4>\n          <div>\n            <p>Description: ${obj.todo._description}</p>\n            <p>Due <time datetime=\"2019-10-15\">Date: ${obj.todo._date}</time></p>\n            <article>Notes: ${obj.todo._notes}</article>\n          </div>`\n    ).attr(\"data-todo-index\", obj.index).element;\n\n};\n\nconst HandleForm = (callback) => {\n  const form = Spare.sel('#form').element;\n  console.log(form);\n  form.onsubmit = event => {\n    event.preventDefault();\n    const title = Spare.sel('#title').element.value;\n    const description = Spare.sel('#description').element.value;\n    const priority = Spare.sel('#priority').element.value;\n    const dueDate = Spare.sel('#dueDate').element.value;\n    const notes = Spare.sel('#notes').element.value;\n    const complete = Spare.sel('#complete').element.checked;\n\n    let newTodo = new Todo(title, description, priority, dueDate, notes, complete);\n    todoDb.create(newTodo);\n\n    try {\n      callback();\n    } catch(error) {\n      \n    }\n  }\n};\n\n\n\n\n//# sourceURL=webpack:///./src/components/TodoComponets.js?");
 
 /***/ }),
 
@@ -186,40 +186,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"Todo\", function() { return Todo; });\n/* harmony import */ var sparetime_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sparetime.js */ \"./node_modules/sparetime.js/dist/spare.js\");\n/* harmony import */ var _components_TodoComponets__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/TodoComponets */ \"./src/components/TodoComponets.js\");\n/* harmony import */ var ispiredb_js_src_ispiredb__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ispiredb.js/src/ispiredb */ \"./node_modules/ispiredb.js/src/ispiredb.js\");\n/* harmony import */ var ispiredb_js_src_ispiredb__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(ispiredb_js_src_ispiredb__WEBPACK_IMPORTED_MODULE_2__);\n\n\n\n(\"./components/TodoComponets\");\n\nObject(sparetime_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"])();\n\nclass Todo {\n  constructor(title, description, priority, dueDate, notes, complete) {\n    this._title = title;\n    this._description = description;\n    this._priority = priority;\n    this._dueDate = dueDate;\n    this._notes = notes;\n    this._complete = complete;\n  }\n\n  get title() {\n    return this._title;\n  }\n\n  set title(value) {\n    this._title = value;\n  }\n\n  get description() {\n    return this._description;\n  }\n\n  set description(value) {\n    this._description = value;\n  }\n\n  get priority() {\n    return this._priority;\n  }\n\n  set priority(value) {\n    this._priority = value;\n  }\n\n  get dueDate() {\n    return this._dueDate;\n  }\n\n  set dueDate(value) {\n    this._dueDate = value;\n  }\n\n  get notes() {\n    return this._notes;\n  }\n\n  set notes(value) {\n    this._notes = value;\n  }\n\n  get complete() {\n    return this._complete;\n  }\n\n  set complete(value) {\n    this._complete = value;\n  }\n}\n\nconst list = new Todo(\n  \"New list\",\n  \"A nice and awesome list\",\n  \"High\",\n  new Date(),\n  \"Remember to finish Microverse\",\n  false\n);\nconsole.log(list.dueDate);\n\nconsole.log();\n\nconst todoDb = new ispiredb_js_src_ispiredb__WEBPACK_IMPORTED_MODULE_2___default.a();\ntodoDb.setup(\n  \"tododb\",\n  1,\n  \"++id\",\n  \"title\",\n  \"description\",\n  \"priority\",\n  \"dueDate\",\n  \"notes\",\n  \"complete\"\n);\n\ntodoDb.create(list);\ntodoDb.find(1, data => {\n  // console.dir(data)\n});\n\nconst Gui = (() => {\n  const displayAllToDos = () => {\n    todoDb.all(data => {\n      data.map((todo, index) => {\n        let parent = Spare.sel(\"#todo-list\");\n        let button = Spare.create(\"button\")\n          .attr(\"class\", \"delete\")\n          .html(\"Delete\").element;\n        button.onclick = element => {\n          console.info(\"Yeah this works\");\n        };\n        parent.append(Object(_components_TodoComponets__WEBPACK_IMPORTED_MODULE_1__[\"ListItem\"])({ todo: todo, index: index }));\n        Spare.sel(`#todo-${index}`).append(button);\n      });\n    });\n  };\n\n  return {\n    displayAllToDos\n  };\n})();\n\nGui.displayAllToDos();\n\n\n//# sourceURL=webpack:///./src/index.js?");
-
-/***/ }),
-
-/***/ "./src/todo.js":
-/*!*********************!*\
-  !*** ./src/todo.js ***!
-  \*********************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-eval("\n\n//# sourceURL=webpack:///./src/todo.js?");
-
-/***/ }),
-
-/***/ "./src/todo.ts":
-/*!*********************!*\
-  !*** ./src/todo.ts ***!
-  \*********************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-eval("\n\n//# sourceURL=webpack:///./src/todo.ts?");
-
-/***/ }),
-
-/***/ 0:
-/*!********************************************************!*\
-  !*** multi ./src/index.js ./src/todo.js ./src/todo.ts ***!
-  \********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("__webpack_require__(/*! /home/ispirett/WebstormProjects/Microverse/javascript-to-do-list/src/index.js */\"./src/index.js\");\n__webpack_require__(/*! /home/ispirett/WebstormProjects/Microverse/javascript-to-do-list/src/todo.js */\"./src/todo.js\");\nmodule.exports = __webpack_require__(/*! /home/ispirett/WebstormProjects/Microverse/javascript-to-do-list/src/todo.ts */\"./src/todo.ts\");\n\n\n//# sourceURL=webpack:///multi_./src/index.js_./src/todo.js_./src/todo.ts?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"Todo\", function() { return Todo; });\n/* harmony import */ var sparetime_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sparetime.js */ \"./node_modules/sparetime.js/dist/spare.js\");\n/* harmony import */ var _components_TodoComponets__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/TodoComponets */ \"./src/components/TodoComponets.js\");\n/* harmony import */ var ispiredb_js_src_ispiredb__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ispiredb.js/src/ispiredb */ \"./node_modules/ispiredb.js/src/ispiredb.js\");\n/* harmony import */ var ispiredb_js_src_ispiredb__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(ispiredb_js_src_ispiredb__WEBPACK_IMPORTED_MODULE_2__);\n\n\n\n\nObject(sparetime_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"])();\n\nclass Todo {\n  constructor(title, description, priority, dueDate, notes, complete) {\n    this._title = title;\n    this._description = description;\n    this._priority = priority;\n    this._dueDate = dueDate;\n    this._notes = notes;\n    this._complete = complete;\n  }\n\n  get title() {\n    return this._title;\n  }\n\n  set title(value) {\n    this._title = value;\n  }\n\n  get description() {\n    return this._description;\n  }\n\n  set description(value) {\n    this._description = value;\n  }\n\n  get priority() {\n    return this._priority;\n  }\n\n  set priority(value) {\n    this._priority = value;\n  }\n\n  get dueDate() {\n    return this._dueDate;\n  }\n\n  set dueDate(value) {\n    this._dueDate = value;\n  }\n\n  get notes() {\n    return this._notes;\n  }\n\n  set notes(value) {\n    this._notes = value;\n  }\n\n  get complete() {\n    return this._complete;\n  }\n\n  set complete(value) {\n    this._complete = value;\n  }\n}\n\nconst list = new Todo(\n  \"New list\",\n  \"A nice and awesome list\",\n  \"High\",\n  new Date(),\n  \"Remember to finish Microverse\",\n  false\n);\nconsole.log(list.dueDate);\n\nconsole.log();\n\nconst todoDb = new ispiredb_js_src_ispiredb__WEBPACK_IMPORTED_MODULE_2___default.a();\ntodoDb.setup(\n  \"tododb\",\n  1,\n  \"++id\",\n  \"title\",\n  \"description\",\n  \"priority\",\n  \"dueDate\",\n  \"notes\",\n  \"complete\"\n);\n\ntodoDb.create(list);\ntodoDb.find(1, data => {\n  // console.dir(data)\n});\n\nconst Gui = (() => {\n  const displayAllToDos = () => {\n    let parent = Spare.sel(\"#todo-list\");\n    parent.html(\"\");\n    todoDb.all(data => {\n      data.map((todo, index) => {\n        let button = Spare.create(\"button\")\n          .attr(\"class\", \"delete\")\n          .html(\"Delete\").element;\n        button.onclick = element => {\n          console.info(\"Yeah this works\");\n        };\n\n        parent.append(Object(_components_TodoComponets__WEBPACK_IMPORTED_MODULE_1__[\"ListItem\"])({ todo: todo, index: index }));\n        Spare.sel(`#todo-${index}`).append(button);\n      });\n    });\n    console.log('display all todos')\n  };\n\n  return {\n    displayAllToDos\n  };\n})();\n\n// Gui.displayAllToDos();\n\nObject(_components_TodoComponets__WEBPACK_IMPORTED_MODULE_1__[\"HandleForm\"])(Gui.displayAllToDos());\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ })
 

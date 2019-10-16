@@ -2,10 +2,10 @@ ul {
   list-style-type: none;
 }
 
-
-.modal{
+.modal {
   background-color: rgba(128, 128, 128, 0.48);
-  display: none;
+  // color: black;
+  // display: none;
   height: 100%;
   width: 100%;
   position: fixed;
@@ -13,26 +13,40 @@ ul {
   text-align: center;
   left: 0;
 
-  .modal-content{
-    padding: .5em;
+  .modal-content {
+    padding: 0.5em;
     background-color: lightcoral;
     width: 60%;
     margin: 6em auto;
     height: 40em;
-    .form{
+    .form {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       width: 60%;
       height: 30em;
       margin: 0 auto;
-      input{
-        height: .5em;
+      input {
+        height: 0.5em;
         border-radius: 2em;
         padding: 1em;
         outline: none;
       }
-
+      select {
+        height: 2.4em;
+        border-radius: 2em;
+        outline: none;
+        padding-left: 1em;
+      }
+      textarea {
+        border-radius: 2em;
+        padding: 1em;
+      }
+      div {
+        input {
+          height: 1em;
+        }
+      }
     }
   }
 }

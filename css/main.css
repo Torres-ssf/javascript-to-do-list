@@ -3,7 +3,6 @@ ul {
 
 .modal {
   background-color: rgba(128, 128, 128, 0.48);
-  display: none;
   height: 100%;
   width: 100%;
   position: fixed;
@@ -11,7 +10,7 @@ ul {
   text-align: center;
   left: 0; }
   .modal .modal-content {
-    padding: .5em;
+    padding: 0.5em;
     background-color: lightcoral;
     width: 60%;
     margin: 6em auto;
@@ -24,7 +23,17 @@ ul {
       height: 30em;
       margin: 0 auto; }
       .modal .modal-content .form input {
-        height: .5em;
+        height: 0.5em;
         border-radius: 2em;
         padding: 1em;
         outline: none; }
+      .modal .modal-content .form select {
+        height: 2.4em;
+        border-radius: 2em;
+        outline: none;
+        padding-left: 1em; }
+      .modal .modal-content .form textarea {
+        border-radius: 2em;
+        padding: 1em; }
+      .modal .modal-content .form div input {
+        height: 1em; }

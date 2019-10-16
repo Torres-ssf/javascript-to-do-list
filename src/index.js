@@ -1,7 +1,6 @@
 import spare from "sparetime.js";
-import { ListItem } from "./components/TodoComponets";
+import { ListItem, HandleForm } from "./components/TodoComponets";
 
-("./components/TodoComponets");
 import IspireDb from "ispiredb.js/src/ispiredb";
 spare();
 
@@ -96,19 +95,22 @@ todoDb.find(1, data => {
 
 const Gui = (() => {
   const displayAllToDos = () => {
+    let parent = Spare.sel("#todo-list");
+    parent.html("");
     todoDb.all(data => {
       data.map((todo, index) => {
-        let parent = Spare.sel("#todo-list");
         let button = Spare.create("button")
           .attr("class", "delete")
           .html("Delete").element;
         button.onclick = element => {
           console.info("Yeah this works");
         };
+
         parent.append(ListItem({ todo: todo, index: index }));
         Spare.sel(`#todo-${index}`).append(button);
       });
     });
+    console.log('display all todos')
   };
 
   return {
@@ -116,4 +118,6 @@ const Gui = (() => {
   };
 })();
 
-Gui.displayAllToDos();
+// Gui.displayAllToDos();
+
+HandleForm(Gui.displayAllToDos());
