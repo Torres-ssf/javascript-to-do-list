@@ -117,6 +117,7 @@ const Gui = (() => {
             updateButton.onclick = () => {
               showModal(`update-${todo.id}`);
               UpdateForm(todo,todoDb);
+              document.cookie = todo.id;
               // todoDb.find(1, data => {
               //        console.dir(data)
               //         });
@@ -135,7 +136,7 @@ const Gui = (() => {
         // ------------------------------------------------------
 
 
-        parent.append(ListItem({ todo: todo, index: index}));
+        parent.append(ListItem({ todo: todo, index: index, todoDb: todoDb }));
         Spare.sel(`#todo-${index}`).append(button,updateButton)
       });
     });
@@ -161,6 +162,8 @@ Gui.displayAllToDos();
 HandleForm(data => {
   todoDb.create(data);
   Gui.displayAllToDos()
+}, updateData => {
+  todoDb.update(document.cookie, updateData);
 });
 
 let dBtn = Spare.sel("#master-delete").element;

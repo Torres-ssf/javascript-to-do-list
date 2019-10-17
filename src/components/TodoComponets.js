@@ -12,28 +12,27 @@ const ListItem = obj => {
             <article>Notes: ${obj.todo._notes}</article>
           </div>`
     )
-        .attr("data-todo-index", obj.index).element;
+    .attr("data-todo-index", obj.index).element;
 
-      // checkbox input ------------------------------------
-      setTimeout(() => {
-        let inputCheckBox = Spare.create("input").attr("type", "checkbox").element;
-        inputCheckBox.onclick = event => {
-          let isChecked = event.target.checked;
-          event.target.parentNode.classList.toggle("complete");
-        };
+  // checkbox input ------------------------------------
+  setTimeout(() => {
+    let inputCheckBox = Spare.create("input").attr("type", "checkbox").element;
+    inputCheckBox.onclick = event => {
+      let isChecked = event.target.checked;
+      event.target.parentNode.classList.toggle("complete");
+      obj.todoDb.update(obj.todo.id, { _complete: isChecked });
+    };
 
-        const h4 = Spare.sel(`#todo-${obj.index}`).element;
-        h4.append(inputCheckBox);
-     }, 1);
-     //-----------------------------------------------------
+    const h4 = Spare.sel(`#todo-${obj.index}`).element;
+    h4.append(inputCheckBox);
+  }, 1);
+  //-----------------------------------------------------
+  console.log(obj.todo.id);
   return listLi;
 };
 
-const HandleForm = callback => {
-  const form = Spare.sel("#form").element;
-  console.log(form);
-  form.onsubmit = event => {
-    event.preventDefault();
+const HandleForm = (callback, updateCallback) => {
+  const formValues = () => {
     const title = Spare.sel("#title").element.value;
     const description = Spare.sel("#description").element.value;
     const priority = Spare.sel("#priority").element.value;
@@ -48,9 +47,20 @@ const HandleForm = callback => {
       notes,
       complete
     );
+    return newTodo;
+  };
+
+  const updateForm = Spare.sel('#form-update').element;
+  updateForm.onclick = () => {
+    updateCallback(formValues());
+  }
+  const form = Spare.sel("#form").element;
+  console.log(form);
+  form.onsubmit = event => {
+    event.preventDefault();
     try {
-      callback(newTodo);
-    } catch (error) {}
+      callback(formValues());
+    } catch (error) { }
   };
 };
 
@@ -68,7 +78,7 @@ const UpdateForm = (props, database, callback) => {
     Spare.sel("#complete").element.checked = data._complete;
     try {
       callback();
-    } catch (error) {}
+    } catch (error) { }
   });
 };
 // Events
