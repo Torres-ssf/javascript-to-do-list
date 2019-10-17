@@ -1,1 +1,5 @@
-import "./tuesday"
+import tuesday from "./tuesday";
+
+tuesday();
+
+

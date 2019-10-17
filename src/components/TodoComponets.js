@@ -95,4 +95,20 @@ const showModal = elementID => {
   };
 };
 
-export { ListItem, HandleForm, UpdateForm, showModal };
+const masterDelete = (callback) => {
+
+  const dBtn = Spare.sel("#master-delete").element;
+
+  dBtn.onclick = () => {
+    if (
+      confirm(
+        "Do you really really really want to do this? It can be the end or you!!!"
+      )
+    ) {
+      callback();
+    }
+  };
+
+}
+
+export { ListItem, HandleForm, UpdateForm, showModal, masterDelete };

@@ -4,7 +4,8 @@ import {
   ListItem,
   HandleForm,
   showModal,
-  UpdateForm
+  UpdateForm,
+  masterDelete
 } from "./components/TodoComponets";
 
 spare();
@@ -69,7 +70,7 @@ export class Tuesday {
 }
 
 // test Todo
-const list = new Todo(
+const list = new Tuesday(
   "Please Change",
   "A nice and awesome list",
   "High",
@@ -149,34 +150,32 @@ const Gui = (() => {
 
 // Setup ----------------------------------------------------------
 
-Gui.displayAllToDos();
+const tuesday = () => {
 
-HandleForm(
-  data => {
-    todoDb.create(data);
-    Gui.displayAllToDos();
-  },
-  updateData => {
-    todoDb.update(Number(sessionStorage.getItem("todo-id")), updateData);
-    Gui.displayAllToDos();
-  }
-);
+  Gui.displayAllToDos();
 
-const dBtn = Spare.sel("#master-delete").element;
+  HandleForm(
+    data => {
+      todoDb.create(data);
+      Gui.displayAllToDos();
+    },
+    updateData => {
+      todoDb.update(Number(sessionStorage.getItem("todo-id")), updateData);
+      Gui.displayAllToDos();
+    }
+  );
 
-dBtn.onclick = () => {
-  if (
-    confirm(
-      "Do you really really really want to do this? It can be the end or you!!!"
-    )
-  ) {
+  showModal("show-form");
+
+  masterDelete(() => {
     todoDb.destroyAll(0);
     setTimeout(() => {
       Gui.displayAllToDos();
     }, 1);
-  }
-};
+  });
 
-showModal("show-form");
+}
 
 // -----------------------------------------------------------------
+
+export default tuesday;
