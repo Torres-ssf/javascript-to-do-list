@@ -1,4 +1,4 @@
-import { Todo } from "../index";
+import { Tuesday } from "../tuesday";
 
 const ListItem = obj => {
   let listLi = Spare.create("li")
@@ -8,7 +8,7 @@ const ListItem = obj => {
               </h4>
           <div>
             <p>Description: ${obj.todo._description}</p>
-            <p>Due <time datetime="2019-10-15">Date: ${obj.todo._date}</time></p>
+            <p>Due <time datetime="2019-10-15">Date: ${obj.todo._dueDate}</time></p>
             <article>Notes: ${obj.todo._notes}</article>
           </div>`
     )
@@ -27,7 +27,6 @@ const ListItem = obj => {
     h4.append(inputCheckBox);
   }, 1);
   //-----------------------------------------------------
-  console.log(obj.todo.id);
   return listLi;
 };
 
@@ -39,7 +38,7 @@ const HandleForm = (callback, updateCallback) => {
     const dueDate = Spare.sel("#dueDate").element.value;
     const notes = Spare.sel("#notes").element.value;
     const complete = Spare.sel("#complete").element.checked;
-    let newTodo = new Todo(
+    let newTodo = new Tuesday(
       title,
       description,
       priority,
@@ -55,7 +54,6 @@ const HandleForm = (callback, updateCallback) => {
     updateCallback(formValues());
   }
   const form = Spare.sel("#form").element;
-  console.log(form);
   form.onsubmit = event => {
     event.preventDefault();
     try {
@@ -68,7 +66,6 @@ const UpdateForm = (props, database, callback) => {
   database.find(props.id, data => {
     console.log(data);
   });
-
   database.find(props.id, data => {
     Spare.sel("#title").element.value = data._title;
     Spare.sel("#description").element.value = data._description;
@@ -76,6 +73,7 @@ const UpdateForm = (props, database, callback) => {
     Spare.sel("#dueDate").element.value = data._dueDate;
     Spare.sel("#notes").element.value = data._notes;
     Spare.sel("#complete").element.checked = data._complete;
+
     try {
       callback();
     } catch (error) { }
@@ -87,9 +85,11 @@ const showModal = elementID => {
   let modal = Spare.sel("#modal").element;
   let modalClose = Spare.sel("#modal-close").element;
   let showForm = Spare.sel(`#${elementID}`).element;
-  showForm.onclick = () => {
+
+  showForm.addEventListener('click', () => {
     modal.style.display = "block";
-  };
+  });
+
   modalClose.onclick = () => {
     modal.style.display = "none";
   };

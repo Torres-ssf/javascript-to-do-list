@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode production",
-    "dev": "webpack --watch src/index.js --mode development",
+    "dev": "webpack --watch src/tuesday.js --mode development",
     "server": "live-server",
     "scss": "node-sass --watch scss/main.scss -o css"
   },
@@ -23,6 +23,8 @@
   "homepage": "https://github.com/Torres-ssf/javascript-to-do-list#readme",
   "devDependencies": {
     "eslint": "^6.5.1",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
     "live-server": "^1.2.1",
     "node-sass": "^4.12.0",
     "nodemon": "^1.19.3",
