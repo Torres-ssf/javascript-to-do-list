@@ -6,7 +6,7 @@ import {
   showModal,
   UpdateForm,
   masterDelete
-} from "./components/TodoComponets";
+} from "./components/TodoComponents";
 
 spare();
 
