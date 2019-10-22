@@ -1,4 +1,4 @@
-import { Tuesday } from '../tuesday';
+import { Tuesday } from '../utilities/database';
 
 const ListItem = (obj) => {
   const listLi = Spare.create('li')
@@ -39,9 +39,6 @@ const ListItem = (obj) => {
       (data) => {
         priority.children[0].children[1].classList.add(data);
       });
-
-    // prioritySwitcher(priority)
-
     expander(`list-item-${obj.index}`, `details-${obj.index}`);
   }, 1);
   //-----------------------------------------------------
@@ -52,10 +49,13 @@ const HandleForm = (callback, updateCallback) => {
   const formValues = () => {
     const title = Spare.sel('#title').element.value;
     const description = Spare.sel('#description').element.value;
-    const priority = Spare.sel('#priority').element.value;
+    let priority = Spare.sel('#priority').element.value;
     const dueDate = Spare.sel('#dueDate').element.value;
     const notes = Spare.sel('#notes').element.value;
     const complete = Spare.sel('#complete').element.checked;
+    if(priority === ''){
+        priority = 'Low'
+    }
     const newTodo = new Tuesday(
       title,
       description,
