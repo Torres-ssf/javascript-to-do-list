@@ -3,17 +3,21 @@ import { Tuesday } from '../tuesday';
 const ListItem = (obj) => {
   const listLi = Spare.create('li')
     .html(
-      `<h4 id="todo-${obj.index}" data-priority='${obj.todo._priority}'> 
-              Title: ${obj.todo._title}
-              <span id='todo-priority-${obj.index}'>Priority: ${obj.todo._priority}</span>
-              </h4>
-          <div>
+      `<div class="head-con" id="todo-${obj.index}" data-priority='${obj.todo._priority}'>
+              <div>
+                <h4>Title: ${obj.todo._title}</h4>
+                <span id='todo-priority-${obj.index}'>Priority: ${obj.todo._priority}</span>
+              </div>
+              <div id="b-container-${obj.index}"></div>
+              </div>
+          <div id="details-${obj.index}">
             <p>Description: ${obj.todo._description}</p>
             <p>Due <time datetime="2019-10-15">Date: ${obj.todo._dueDate}</time></p>
             <article>Notes: ${obj.todo._notes}</article>
           </div>`,
     )
-    .attr('data-todo-index', obj.index).element;
+    .attr('data-todo-index', obj.index)
+    .attr('id', `list-item-${obj.index}`).element;
 
   // checkbox input ------------------------------------
   setTimeout(() => {
@@ -24,16 +28,20 @@ const ListItem = (obj) => {
       obj.todoDb.update(obj.todo.id, { _complete: isChecked });
     };
 
-    const h4 = Spare.sel(`#todo-${obj.index}`).element;
-    h4.append(inputCheckBox);
+    const div = Spare.sel(`#b-container-${obj.index}`).element;
+    div.append(inputCheckBox);
 
     // / function call
     const priority = Spare.sel(`#todo-${obj.index}`).element;
 
     prioritySwitcher(priority.getAttribute('data-priority'),
       (data) => {
-        priority.children[0].classList.add(data);
+        priority.children[0].children[1].classList.add(data);
       });
+
+    // prioritySwitcher(priority)
+
+    expander(`list-item-${obj.index}`, `details-${obj.index}`);
   }, 1);
   //-----------------------------------------------------
   return listLi;
@@ -135,16 +143,28 @@ const prioritySwitcher = (value, callback) => {
   if (lowValue === type.high) {
     // / logic
     callback(lowValue);
-  } else if (lowValue.toLowerCase() === type.medium) {
+  } else if (lowValue === type.medium) {
     // / logic
     callback(lowValue);
-  } else if (lowValue.toLowerCase() === type.low) {
+  } else if (lowValue === type.low) {
     // / logic
     callback(lowValue);
   } else {
     throw new TypeError();
   }
 };
+
+const expander = (parentID, childID) => {
+  const parent = document.getElementById(parentID);
+  const child = document.getElementById(childID);
+
+  child.classList.add('hidden');
+
+  parent.addEventListener('click', () => {
+    child.classList.toggle('hidden')
+  })
+}
+
 
 
 export {

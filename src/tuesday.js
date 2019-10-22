@@ -129,7 +129,7 @@ const Gui = (() => {
         // ------------------------------------------------------
 
         parent.append(ListItem({ todo, index, todoDb }));
-        Spare.sel(`#todo-${index}`).append(button, updateButton);
+        Spare.sel(`#b-container-${index}`).append(button, updateButton);
 
         //event setup ---------------------
         showModal(`update-${todo.id}`);

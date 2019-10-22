@@ -1,5 +1,24 @@
+body {
+  background-color: #ECEDF1; }
+
 ul {
+  padding: 12px 24px;
   list-style-type: none; }
+
+li {
+  background-color: #F7F7F7;
+  border-radius: .5em;
+  box-shadow: 0 8px 8px rgba(126, 123, 123, 0.15);
+  margin: .9em 0;
+  padding: 1em; }
+  li .head-con {
+    display: flex; }
+    li .head-con div:first-child {
+      flex: 1; }
+    li .head-con div:last-child {
+      align-self: center; }
+  li h4 {
+    margin: 0; }
 
 .modal {
   display: none;
@@ -54,3 +73,9 @@ ul {
 
 .low {
   color: #ff6a53; }
+
+.hidden {
+  display: none; }
+
+.float-right {
+  float: right; }
