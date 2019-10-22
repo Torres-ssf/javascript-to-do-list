@@ -22,6 +22,7 @@ const ListItem = (obj) => {
   // checkbox input ------------------------------------
   setTimeout(() => {
     const inputCheckBox = Spare.create('input').attr('type', 'checkbox').element;
+    inputCheckBox.classList.add('checkbox');
     inputCheckBox.onclick = (event) => {
       const isChecked = event.target.checked;
       event.target.parentNode.classList.toggle('complete');

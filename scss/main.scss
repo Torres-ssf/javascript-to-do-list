@@ -105,6 +105,34 @@ li {
   display: none;
 }
 
-.float-right {
-  float: right;
+.checkbox {
+  // content: '';
+  // background: #fff;
+  // border: 2px solid #ddd;
+  // display: inline-block;
+  // vertical-align: middle;
+  // width: 20px;
+  // height: 20px;
+  // padding: 2px;
+  // margin-right: 10px;
+}
+
+.delete {
+  background: url(../assets/delete.svg);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  border: none;
+  cursor: pointer;
+  height: 24px;
+  width: 24px;
+}
+
+.update {
+  background: url(../assets/edit.svg);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  border: none;
+  cursor: pointer;
+  height: 24px;
+  width: 24px;
 }

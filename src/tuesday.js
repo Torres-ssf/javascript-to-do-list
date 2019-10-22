@@ -112,7 +112,8 @@ const Gui = (() => {
           .attr("class", "update")
           .attr("id", `update-${todo.id}`)
           .attr("data-index", todo.id)
-          .html("update").element;
+          // .html("update")
+          .element;
         updateButton.onclick = () => {
           UpdateForm(todo, todoDb);
           sessionStorage.setItem("todo-id", todo.id);
@@ -122,7 +123,8 @@ const Gui = (() => {
         // Delete button --------------------------------
         const button = Spare.create("button")
           .attr("class", "delete")
-          .html("Delete").element;
+          // .html("Delete")
+          .element;
         button.onclick = element => {
           deleteTodo(todo);
         };

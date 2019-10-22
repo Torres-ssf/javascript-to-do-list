@@ -77,5 +77,20 @@ li {
 .hidden {
   display: none; }
 
-.float-right {
-  float: right; }
+.delete {
+  background: url(../assets/delete.svg);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  border: none;
+  cursor: pointer;
+  height: 24px;
+  width: 24px; }
+
+.update {
+  background: url(../assets/edit.svg);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  border: none;
+  cursor: pointer;
+  height: 24px;
+  width: 24px; }
