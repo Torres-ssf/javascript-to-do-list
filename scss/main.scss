@@ -7,6 +7,8 @@ ul {
   list-style-type: none;
 }
 
+
+
 li {
   background-color: #F7F7F7;
   border-radius: .5em;
@@ -135,4 +137,79 @@ li {
   cursor: pointer;
   height: 24px;
   width: 24px;
+}
+
+// Wrapper
+
+.wrapper{
+  width: 70%;
+  margin: 0 auto;
+}
+
+.header{
+  margin-top: .5em;
+  background-image: linear-gradient(90deg, #0b282d, rgba(23, 23, 47, 0.93));
+  height: 18em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(85, 85, 85, 0.4);
+  border-radius: .5em;
+  .header-right{
+    img{
+      width: 10em;
+      border-radius: 50%;
+      box-shadow: 0 4px 18px #423f7c;
+      margin-right:1em ;
+    }
+  }
+
+  .header-left{
+
+
+    margin-left: 2em;
+    .info{
+      color:white;
+      p{
+        display: flex;
+        flex-direction: row;
+
+        .info-icon{
+          display: block;
+          background: url('../assets/delete.svg');
+          background-repeat: no-repeat;
+
+          width: 1em;
+          margin-right: .5em;
+        }
+
+      }
+    }
+  }
+}
+
+// todo
+
+.todo-container{
+  position: relative;
+  bottom: 3em;
+  background-color: rgba(255, 255, 255, 0.93);
+  @extend  %border-r;
+  @extend %box-shadow-con;
+  width: 95%;
+  margin: 0 auto;
+  height: 37.5em;
+  overflow-y: auto;
+}
+
+%border-r{
+  border-radius: .5em;
+}
+%box-shadow-con{
+  box-shadow: 0 4px 20px rgba(140, 140, 140, 0.12);
+}
+
+@mixin border($value){
+  border-radius: $value#{em};
 }

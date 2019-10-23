@@ -10,11 +10,29 @@
     <title>Document</title>
   </head>
   <body>
-    <main>
+    <main class="wrapper">
       <button id="master-delete">delete all todos</button>
       <button id="show-form">create todo</button>
-      <ul id="todo-list"></ul>
-    </main>
+
+      <header class="header">
+
+        <div class="header-left">
+            <div class="info">
+               <h4> The time is
+                <small>12:00 pm</small>
+               </h4>
+              <p><span class="info-icon"></span> testing</p>
+              <p><span class="info-icon"></span>testing</p>
+            </div>
+        </div>
+
+        <div class="header-right">
+          <img src="assets/Neon+Clock.png" alt="image">
+        </div>
+      </header>
+      <div class="todo-container">
+        <ul id="todo-list"></ul>
+      </div>
 
 
     <div class="modal" id="modal">
@@ -51,7 +69,7 @@
         <button id="form-update" >Update</button>
       </div>
     </div>
-
+    </main>
     <script src="dist/main.js"></script>
   </body>
 </html>
