@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+@import "variables";
 body {
   background-color: #ECEDF1;
+  font-family: 'Raleway', sans-serif;
 }
 
 ul {
@@ -21,11 +24,21 @@ li {
 
     div:first-child {
       flex: 1;
+      h4{
+        color: $main-text-color;
+      }
     }
+
 
     div:last-child {
       align-self: center;
+
     }
+  }
+
+  .head-con + div{
+      font-weight: 100;
+    color: #6a6a6a;
   }
 
   h4 {
@@ -92,15 +105,18 @@ li {
 }
 
 .high{
-  color: red;
+  color: rgb(254, 25, 91);
+  text-shadow: 0 1px 0 #ff69ea;
 }
 
 .medium{
-  color:purple ;
+  color: #a932ff;
+  text-shadow: 0 1px 0 #ff69ea;
 }
 
 .low{
-  color: #ff6a53;
+  color: #ff7f00;
+  text-shadow: 0 1px 0 #ff69ea;
 }
 
 .hidden {
@@ -166,15 +182,22 @@ li {
   }
 
   .header-left{
-
-
     margin-left: 2em;
     .info{
       color:white;
+      h4{
+        color: $main-text-color;
+        small{
+        color: $secondary-text-color;
+        }
+        text-shadow: 0 1px 0px grey;
+      }
       p{
+        font-weight: 300;
         display: flex;
         flex-direction: row;
-
+        color: $secondary-text-color;
+        text-shadow: 0 1px 1px grey;
         .info-icon{
           display: block;
           background: url('../assets/delete.svg');
@@ -212,4 +235,18 @@ li {
 
 @mixin border($value){
   border-radius: $value#{em};
+}
+
+#show-form, #master-delete{
+  background-color: $main-text-color;
+  padding: .5em;
+  border-radius: .2em;
+  border: 1px solid $main-text-color;
+  box-shadow: 0 4px 15px #bbbbbb;
+  color: white;
+  text-shadow: 0 1px 0 grey;
+}
+#show-form:hover, #master-delete:hover{
+  box-shadow: 0 4px 30px #8e8e8e;
+  cursor: pointer;
 }
