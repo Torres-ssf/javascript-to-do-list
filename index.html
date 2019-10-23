@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/main.css" />
 
     <title>Document</title>
@@ -15,60 +15,63 @@
       <button id="show-form">create todo</button>
 
       <header class="header">
-
         <div class="header-left">
-            <div class="info">
-               <h4> THE TIME IS:
-                <small>12:00 pm</small>
-               </h4>
-              <p><span class="info-icon"></span> New York</p>
-              <p><span class="info-icon"></span>Notifications</p>
-            </div>
+          <div class="info">
+            <h4>
+              THE TIME IS:
+              <small>12:00 pm</small>
+            </h4>
+            <p><span class="info-icon"></span> New York</p>
+            <p><span class="info-icon"></span>Notifications</p>
+          </div>
         </div>
 
         <div class="header-right">
-          <img src="assets/Neon+Clock.png" alt="image">
+          <img src="assets/Neon+Clock.png" alt="image" />
         </div>
       </header>
       <div class="todo-container">
         <ul id="todo-list"></ul>
       </div>
 
+      <div class="modal" id="modal">
+        <div class="modal-content">
+          <button id="modal-close">X</button>
+          <h3>Create new Tuesday</h3>
+          <form id="form" action="" class="form">
+            <label for="title">Title</label>
+            <input id="title" type="text" placeholder="title" />
 
-    <div class="modal" id="modal">
-      <div class="modal-content">
-        <button id="modal-close">X</button>
-        <h4>Create new Tuesday</h4>
-        <form id="form" action="" class="form">
-          <label for="title">Title</label>
-          <input id="title" type="text" placeholder="title" />
+            <label for="description">Description</label>
+            <input id="description" type="text" placeholder="description" />
 
-          <label for="description">Description</label>
-          <input id="description" type="text" placeholder="description" />
+            <label for="dueDate">Due Date</label>
+            <input id="dueDate" type="date" />
 
-          <label for="priority">Priority</label>
-          <select name="priority" id="priority" value="low">
-            <option value="low" selected>Low</option>
-            <option value="medium">Medium</option>
-            <option value="high">High</option>
-          </select>
+            <label for="priority">Priority</label>
+            <select name="priority" id="priority" value="low">
+              <option value="low" selected>Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
 
-          <label for="dueDate">Due Date</label>
-          <input id="dueDate" type="date" />
+            <label for="notes">Notes</label>
+            <textarea name="" id="notes" cols="30" rows="10"></textarea>
 
-          <label for="notes">Notes</label>
-          <textarea name="" id="notes" cols="30" rows="10"></textarea>
-
-          <div>
-            <input id="complete" type="checkbox"/>
-            <label for="Complete">Complete</label>
-          </div>
-
-          <button type="submit">Create</button>
-        </form>
-        <button id="form-update" >Update</button>
+            <label class="container"
+              >One
+              <input id="complete" type="checkbox" checked="checked" />
+              <span class="checkmark"></span>
+            </label>
+            <div>
+              <input id="complete" type="checkbox" />
+              <label for="Complete">Complete</label>
+            </div>
+            <button type="submit">Create</button>
+          </form>
+          <button id="form-update">Update</button>
+        </div>
       </div>
-    </div>
     </main>
     <script src="dist/main.js"></script>
   </body>

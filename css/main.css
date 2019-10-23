@@ -1,17 +1,17 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");
 body {
-  background-color: #ECEDF1;
-  font-family: 'Raleway', sans-serif; }
+  background-color: #ecedf1;
+  font-family: "Raleway", sans-serif; }
 
 ul {
   padding: 12px 24px;
   list-style-type: none; }
 
 li {
-  background-color: #F7F7F7;
-  border-radius: .5em;
+  background-color: #f7f7f7;
+  border-radius: 0.5em;
   box-shadow: 0 8px 8px rgba(126, 123, 123, 0.15);
-  margin: .9em 0;
+  margin: 0.9em 0;
   padding: 1em; }
   li .head-con {
     display: flex; }
@@ -45,28 +45,39 @@ li {
     .modal .modal-content #modal-close {
       float: right;
       color: red; }
+    .modal .modal-content h3 {
+      font-size: 2rem; }
     .modal .modal-content .form {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       width: 60%;
       height: 30em;
-      margin: 0 auto; }
-      .modal .modal-content .form input {
-        height: 0.5em;
-        border-radius: 2em;
-        padding: 1em;
-        outline: none; }
-      .modal .modal-content .form select {
-        height: 2.4em;
-        border-radius: 2em;
-        outline: none;
-        padding-left: 1em; }
+      margin: 0 auto;
+      text-align: left; }
+      .modal .modal-content .form input[type="text"],
+      .modal .modal-content .form input[type="date"],
+      .modal .modal-content .form select,
       .modal .modal-content .form textarea {
-        border-radius: 2em;
-        padding: 1em; }
-      .modal .modal-content .form div input {
-        height: 1em; }
+        background-color: white;
+        color: #495057;
+        height: 2.8rem;
+        border: 1px solid #ced4da;
+        border-radius: 0.25rem;
+        padding: 0.325rem 0.75rem;
+        line-height: 1.5;
+        margin: 0.25rem 0 0.75rem;
+        outline: none;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; }
+      .modal .modal-content .form input:focus,
+      .modal .modal-content .form select:focus,
+      .modal .modal-content .form textarea:focus {
+        border-color: #80bdff;
+        color: #495057;
+        outline: 0;
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); }
+      .modal .modal-content .form textarea {
+        height: 5rem; }
 
 .complete {
   text-decoration: line-through;
@@ -110,7 +121,7 @@ li {
   margin: 0 auto; }
 
 .header {
-  margin-top: .5em;
+  margin-top: 0.5em;
   background-image: linear-gradient(90deg, #0b282d, rgba(23, 23, 47, 0.93));
   height: 18em;
   display: flex;
@@ -118,7 +129,7 @@ li {
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 4px 15px rgba(85, 85, 85, 0.4);
-  border-radius: .5em; }
+  border-radius: 0.5em; }
   .header .header-right img {
     width: 10em;
     border-radius: 50%;
@@ -144,7 +155,7 @@ li {
           background: url("../assets/delete.svg");
           background-repeat: no-repeat;
           width: 1em;
-          margin-right: .5em; }
+          margin-right: 0.5em; }
 
 .todo-container {
   position: relative;
@@ -156,20 +167,22 @@ li {
   overflow-y: auto; }
 
 .todo-container {
-  border-radius: .5em; }
+  border-radius: 0.5em; }
 
 .todo-container {
   box-shadow: 0 4px 20px rgba(140, 140, 140, 0.12); }
 
-#show-form, #master-delete {
+#show-form,
+#master-delete {
   background-color: #9491ff;
-  padding: .5em;
-  border-radius: .2em;
+  padding: 0.5em;
+  border-radius: 0.2em;
   border: 1px solid #9491ff;
   box-shadow: 0 4px 15px #bbbbbb;
   color: white;
   text-shadow: 0 1px 0 grey; }
 
-#show-form:hover, #master-delete:hover {
+#show-form:hover,
+#master-delete:hover {
   box-shadow: 0 4px 30px #8e8e8e;
   cursor: pointer; }
