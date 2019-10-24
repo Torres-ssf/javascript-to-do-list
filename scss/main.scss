@@ -53,12 +53,14 @@ li {
   left: 0;
 
   .modal-content {
+   border-radius: 1em;
+    color: white;
     #modal-close {
       float: right;
       color: red;
     }
-    padding: 0.5em;
-    background-color: lightcoral;
+    padding: 2em;
+    background-image: linear-gradient(90deg, #0b282d, rgba(23, 23, 47, 0.93));
     width: 60%;
     margin: 6em auto;
     height: 40em;
@@ -104,6 +106,14 @@ li {
       //     height: 1em;
       //   }
       // }
+    }
+    #form-update, #form-submit{
+      margin-top: 1em;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+    #form-update{
+      width: 60%;
     }
   }
 }

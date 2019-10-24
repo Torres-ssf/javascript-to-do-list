@@ -87,7 +87,7 @@ todoDb.setup(
 
 // Db dummy test data -------------------------------
 
-todoDb.create(list);
+//todoDb.create(list);
 
 // ------------------------------------------------
 
