@@ -1,5 +1,8 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");
+@import "variables";
 body {
-  background-color: #ECEDF1;
+  background-color: #ecedf1;
+  font-family: "Raleway", sans-serif;
 }
 
 ul {
@@ -8,10 +11,10 @@ ul {
 }
 
 li {
-  background-color: #F7F7F7;
-  border-radius: .5em;
+  background-color: #f7f7f7;
+  border-radius: 0.5em;
   box-shadow: 0 8px 8px rgba(126, 123, 123, 0.15);
-  margin: .9em 0;
+  margin: 0.9em 0;
   padding: 1em;
 
   .head-con {
@@ -19,11 +22,19 @@ li {
 
     div:first-child {
       flex: 1;
+      h4 {
+        color: $main-text-color;
+      }
     }
 
     div:last-child {
       align-self: center;
     }
+  }
+
+  .head-con + div {
+    font-weight: 100;
+    color: #6a6a6a;
   }
 
   h4 {
@@ -42,16 +53,20 @@ li {
   left: 0;
 
   .modal-content {
-
-    #modal-close{
+   border-radius: 1em;
+    color: white;
+    #modal-close {
       float: right;
       color: red;
     }
-    padding: 0.5em;
-    background-color: lightcoral;
+    padding: 2em;
+    background-image: linear-gradient(90deg, #0b282d, rgba(23, 23, 47, 0.93));
     width: 60%;
     margin: 6em auto;
     height: 40em;
+    h3 {
+      font-size: 2rem;
+    }
     .form {
       display: flex;
       flex-direction: column;
@@ -59,52 +74,199 @@ li {
       width: 60%;
       height: 30em;
       margin: 0 auto;
-      input {
-        height: 0.5em;
-        border-radius: 2em;
-        padding: 1em;
+      text-align: left;
+      input[type="text"],
+      input[type="date"],
+      select,
+      textarea {
+        background-color: white;
+        color: #495057;
+        height: 2.8rem;
+        border: 1px solid #ced4da;
+        border-radius: 0.25rem;
+        padding: 0.325rem 0.75rem;
+        line-height: 1.5;
+        margin: 0.25rem 0 0.75rem;
         outline: none;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
       }
-      select {
-        height: 2.4em;
-        border-radius: 2em;
-        outline: none;
-        padding-left: 1em;
+      input:focus,
+      select:focus,
+      textarea:focus {
+        border-color: #80bdff;
+        color: #495057;
+        outline: 0;
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
       }
       textarea {
-        border-radius: 2em;
-        padding: 1em;
+        height: 5rem;
       }
-      div {
-        input {
-          height: 1em;
-        }
-      }
+      // div {
+      //   input {
+      //     height: 1em;
+      //   }
+      // }
+    }
+    #form-update, #form-submit{
+      margin-top: 1em;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+    #form-update{
+      width: 60%;
     }
   }
 }
 
-.complete{
+.complete {
   text-decoration: line-through;
   color: red;
 }
 
-.high{
-  color: red;
+.high {
+  color: rgb(254, 25, 91);
+  text-shadow: 0 1px 0 #ff69ea;
 }
 
-.medium{
-  color:purple ;
+.medium {
+  color: #a932ff;
+  text-shadow: 0 1px 0 #ff69ea;
 }
 
-.low{
-  color: #ff6a53;
+.low {
+  color: #ff7f00;
+  text-shadow: 0 1px 0 #ff69ea;
 }
 
 .hidden {
   display: none;
 }
 
-.float-right {
-  float: right;
+.checkbox {
+  // content: '';
+  // background: #fff;
+  // border: 2px solid #ddd;
+  // display: inline-block;
+  // vertical-align: middle;
+  // width: 20px;
+  // height: 20px;
+  // padding: 2px;
+  // margin-right: 10px;
+}
+
+.delete {
+  background: url(../assets/delete.svg);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  border: none;
+  cursor: pointer;
+  height: 24px;
+  width: 24px;
+}
+
+.update {
+  background: url(../assets/edit.svg);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  border: none;
+  cursor: pointer;
+  height: 24px;
+  width: 24px;
+}
+
+// Wrapper
+
+.wrapper {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.header {
+  margin-top: 0.5em;
+  background-image: linear-gradient(90deg, #0b282d, rgba(23, 23, 47, 0.93));
+  height: 18em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(85, 85, 85, 0.4);
+  border-radius: 0.5em;
+  .header-right {
+    img {
+      width: 10em;
+      border-radius: 50%;
+      box-shadow: 0 4px 18px #423f7c;
+      margin-right: 1em;
+    }
+  }
+
+  .header-left {
+    margin-left: 2em;
+    .info {
+      color: white;
+      h4 {
+        color: $main-text-color;
+        small {
+          color: $secondary-text-color;
+        }
+        text-shadow: 0 1px 0px grey;
+      }
+      p {
+        font-weight: 300;
+        display: flex;
+        flex-direction: row;
+        color: $secondary-text-color;
+        text-shadow: 0 1px 1px grey;
+        .info-icon {
+          display: block;
+          background: url("../assets/delete.svg");
+          background-repeat: no-repeat;
+
+          width: 1em;
+          margin-right: 0.5em;
+        }
+      }
+    }
+  }
+}
+
+// todo
+
+.todo-container {
+  position: relative;
+  bottom: 3em;
+  background-color: rgba(255, 255, 255, 0.93);
+  @extend %border-r;
+  @extend %box-shadow-con;
+  width: 95%;
+  margin: 0 auto;
+  height: 37.5em;
+  overflow-y: auto;
+}
+
+%border-r {
+  border-radius: 0.5em;
+}
+%box-shadow-con {
+  box-shadow: 0 4px 20px rgba(140, 140, 140, 0.12);
+}
+
+@mixin border($value) {
+  border-radius: $value#{em};
+}
+
+#show-form,
+#master-delete {
+  background-color: $main-text-color;
+  padding: 0.5em;
+  border-radius: 0.2em;
+  border: 1px solid $main-text-color;
+  box-shadow: 0 4px 15px #bbbbbb;
+  color: white;
+  text-shadow: 0 1px 0 grey;
+}
+#show-form:hover,
+#master-delete:hover {
+  box-shadow: 0 4px 30px #8e8e8e;
+  cursor: pointer;
 }
