@@ -166,13 +166,28 @@ li {
           margin-right: 0.5em; }
 
 .todo-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   position: relative;
   bottom: 3em;
   background-color: rgba(255, 255, 255, 0.93);
   width: 95%;
   margin: 0 auto;
-  height: 37.5em;
+  height: 40.5em;
   overflow-y: auto; }
+
+#todo-list {
+  width: 60%; }
+
+#todo-project {
+  width: 30%;
+  overflow-y: auto;
+  height: 100%;
+  color: #9491ff;
+  font-weight: bold;
+  text-align: center;
+  text-transform: capitalize; }
 
 .todo-container {
   border-radius: 0.5em; }

@@ -1,6 +1,6 @@
 import spare from "sparetime.js";
 import Gui from  './components/Gui'
-import {todoDb} from "./utilities/database";
+import {todoDb, project} from "./utilities/database";
 import {
   HandleForm,
   showModal,
@@ -15,12 +15,13 @@ spare();
 // Setup ----------------------------------------------------------
 
 const tuesday = () => {
-
+  Gui.allProjects();
   Gui.displayAllToDos();
 
   HandleForm(
     data => {
       todoDb.create(data);
+      project.update(1,{todos:data})
       Gui.displayAllToDos();
     },
     updateData => {

@@ -233,6 +233,9 @@ li {
 // todo
 
 .todo-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   position: relative;
   bottom: 3em;
   background-color: rgba(255, 255, 255, 0.93);
@@ -240,8 +243,21 @@ li {
   @extend %box-shadow-con;
   width: 95%;
   margin: 0 auto;
-  height: 37.5em;
+  height: 40.5em;
   overflow-y: auto;
+}
+
+#todo-list{
+  width: 60%;
+}
+ #todo-project{
+  width: 30%;
+   overflow-y: auto ;
+   height: 100%;
+   color: $main-text-color;
+   font-weight: bold;
+   text-align: center;
+   text-transform: capitalize;
 }
 
 %border-r {
@@ -265,8 +281,11 @@ li {
   color: white;
   text-shadow: 0 1px 0 grey;
 }
+
+
 #show-form:hover,
 #master-delete:hover {
   box-shadow: 0 4px 30px #8e8e8e;
   cursor: pointer;
 }
+

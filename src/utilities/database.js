@@ -1,12 +1,14 @@
 import IspireDb from "ispiredb.js/src/ispiredb";
+import tuesday from "../tuesday";
 export class Tuesday {
-    constructor(title, description, priority, dueDate, notes, complete) {
+    constructor(title, description, priority, dueDate, notes, complete, project) {
         this._title = title;
         this._description = description;
         this._priority = priority;
         this._dueDate = dueDate;
         this._notes = notes;
         this._complete = complete;
+        this._project_id = project
     }
 
     get title() {
@@ -56,6 +58,13 @@ export class Tuesday {
     set complete(value) {
         this._complete = value;
     }
+    get project_id() {
+        return this._project_id;
+    }
+
+    set project_id(value) {
+        this._project_id = value;
+    }
 }
 
 
@@ -81,7 +90,8 @@ todoDb.setup(
     "priority",
     "dueDate",
     "notes",
-    "complete"
+    "complete",
+    "&project_id"
 );
 // ------------------------------
 
@@ -89,6 +99,13 @@ todoDb.setup(
 
 //todoDb.create(list);
 
+// let test = todoDb.query().where('_project_id').equals('Default-Project');
+// test.toArray().forEach(e => console.log(e))
+
 // ------------------------------------------------
 
-export {todoDb}
+const project = new IspireDb();
+project.setup('project', 1,  'name','tuesdays');
+project.create({name: 'default-Project',tuesdays:[list] });
+
+export {todoDb, project}

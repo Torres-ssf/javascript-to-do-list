@@ -17,7 +17,14 @@ const ListItem = (obj) => {
           </div>`,
     )
     .attr('data-todo-index', obj.index)
-    .attr('id', `list-item-${obj.index}`).element;
+    .attr('id', `list-item-${obj.index}`).
+     attr('draggable', 'true').element
+
+     listLi.ondragstart = (event) => {
+       console.log(event.target.id);
+       event.dataTransfer.setData('text/plain', event.target.id)
+
+     };
 
   // checkbox input ------------------------------------
   setTimeout(() => {
@@ -49,6 +56,7 @@ const HandleForm = (callback, updateCallback) => {
   const formValues = () => {
     const title = Spare.sel('#title').element.value;
     const description = Spare.sel('#description').element.value;
+    const project = Spare.sel('#project').element.value;
     let priority = Spare.sel('#priority').element.value;
     const dueDate = Spare.sel('#dueDate').element.value;
     const notes = Spare.sel('#notes').element.value;
@@ -63,6 +71,7 @@ const HandleForm = (callback, updateCallback) => {
       dueDate,
       notes,
       complete,
+      project,
     );
     return newTodo;
   };
@@ -87,6 +96,7 @@ const UpdateForm = (props, database, callback) => {
   database.find(props.id, (data) => {
     Spare.sel('#title').element.value = data._title;
     Spare.sel('#description').element.value = data._description;
+    Spare.sel('#project').element.checked = data._project_id;
     Spare.sel('#priority').element.value = data._priority;
     Spare.sel('#dueDate').element.value = data._dueDate;
     Spare.sel('#notes').element.value = data._notes;
