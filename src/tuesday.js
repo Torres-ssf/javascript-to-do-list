@@ -22,7 +22,13 @@ const tuesday = () => {
   HandleForm(
     data => {
       todoDb.create(data);
-      project.update(1,{todos:data})
+
+      project.find(data._project_id, proData => {
+        const currentTodos = proData._tuesdays;
+        currentTodos.push(data);
+        project.update(data._project_id,{_tuesdays:currentTodos})
+      })
+
       // Gui.displayAllToDos();
     },
     updateData => {

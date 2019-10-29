@@ -97,7 +97,8 @@ const list = new Tuesday(
 	"High",
 	new Date(),
 	"Remember to finish Microverse",
-	false
+	false,
+     'Default-Project',
 );
 
 const testProject = new Project(

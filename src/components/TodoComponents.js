@@ -17,6 +17,7 @@ const ListItem = (obj) => {
           </div>`,
     )
     .attr('data-todo-index', obj.index)
+    .attr('data-todo-project', obj.todo._project_id)
     .attr('id', `list-item-${obj.index}`).
      attr('draggable', 'true').element
 
@@ -192,7 +193,7 @@ const expander = (parentID, childID) => {
   parent.addEventListener('click', () => {
     child.classList.toggle('hidden')
   })
-}
+};
 
 
 

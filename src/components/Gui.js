@@ -2,40 +2,50 @@ import {ListItem, showModal, UpdateForm} from "./TodoComponents";
 import {todoDb, project} from  '../utilities/database'
 
 const Gui = (() => {
-    const displayAllToDos = (project) => {
+    const displayAllToDos = (projectData) => {
         const parent = Spare.sel("#todo-list");
         parent.html("");
-            project._tuesdays.map((todo, index) => {
-                // update button --------------------------------
-                const updateButton = Spare.create("button")
-                    .attr("class", "update")
-                    .attr("id", `update-${todo.id}`)
-                    .attr("data-index", todo.id)
-                    // .html("update")
-                    .element;
-                updateButton.onclick = () => {
-                    UpdateForm(todo, todoDb);
-                    sessionStorage.setItem("todo-id", todo.id);
-                };
-                // ---------------------------------------------------
+         try {
+             projectData._tuesdays.map((todo, index) => {
+                 // update button --------------------------------
+                 const updateButton = Spare.create("button")
+                     .attr("class", "update")
+                     .attr("id", `update-${todo.id}`)
+                     .attr("data-index", todo.id)
+                     // .html("update")
+                     .element;
+                 updateButton.onclick = () => {
+                     UpdateForm(todo, todoDb);
+                     sessionStorage.setItem("todo-id", todo.id);
+                 };
+                 // ---------------------------------------------------
 
-                // Delete button --------------------------------
-                const button = Spare.create("button")
-                    .attr("class", "delete")
-                    // .html("Delete")
-                    .element;
-                button.onclick = element => {
-                    deleteTodo(todo);
-                };
-                // ------------------------------------------------------
+                 // Delete button --------------------------------
+                 const button = Spare.create("button")
+                     .attr("class", "delete")
+                     // .html("Delete")
+                     .element;
+                 button.onclick = element => {
+                     deleteTodo(todo);
 
-                parent.append(ListItem({ todo, index, todoDb }));
-                Spare.sel(`#b-container-${index}`).append(button, updateButton);
+                     project.find(projectData._name, data => {
+                         const current = data._tuesdays;
+                         current.splice(index,1);
+                         project.update(projectData._name, {_tuesdays: current})
+                     })
+                 };
+                 // ------------------------------------------------------
 
-                //event setup ---------------------
-                showModal("modal", "modal-close", `update-${todo.id}`);
-                // ---------------------------------
-            });
+                 parent.append(ListItem({todo, index, todoDb}));
+                 Spare.sel(`#b-container-${index}`).append(button, updateButton);
+
+                 //event setup ---------------------
+                 showModal("modal", "modal-close", `update-${todo.id}`);
+                 // ---------------------------------
+             });
+         }catch (e) {
+             
+         }
     };
 
     const allProjects = () =>{
@@ -75,15 +85,38 @@ const Gui = (() => {
                     event.preventDefault();
                     let todoParent = Spare.sel('#todo-list')
                     let drop = event.dataTransfer.getData('text/plain');
-                    let index = event.target.getAttribute('data-project-id');
                     let todoId =  document.getElementById(drop);
-
+                    let index = todoId.getAttribute('data-todo-index');
+                    let projectName = todoId.getAttribute('data-todo-project');
+                    let receiver = event.target.innerText
                     event.target.append(todoId);
-                    let test = todoDb.query().where('_project_id').equals('Default-Project').toArray()
-                    test.then(d => console.log(d))
-                    todoParent.removeChild(Spare.sel(`#${drop}`).element);
+                    try {
+                        todoParent.removeChild(Spare.sel(`#${drop}`).element);
+                    } catch (e) {
+                        
+                    }
+
+                    //GEt data
+                    project.find(projectName, dataGet => {
+                        const currentGet = dataGet._tuesdays;
+                        const foundData = currentGet[index];
+                        foundData._project_id = receiver;
+
+
+                    // Saving Data
+                        project.find(receiver, data => {
+                            const current = data._tuesdays;
+                            current.push(foundData);
+                            project.update(receiver, {_tuesdays: current})
+                        });
+
+                        currentGet.splice(index,1);
+                        project.update(projectName, {_tuesdays: currentGet})
+                    });
+
+
+
                     allProjects();
-                    displayAllToDos();
                  };
 
 
