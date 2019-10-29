@@ -55,7 +55,8 @@ li {
   .modal-content {
    border-radius: 1em;
     color: white;
-    #modal-close {
+    #modal-close,
+    #project-modal-close {
       float: right;
       color: red;
     }
@@ -272,7 +273,9 @@ li {
 }
 
 #show-form,
-#master-delete {
+#master-delete,
+#project-delete-all,
+#create-project {
   background-color: $main-text-color;
   padding: 0.5em;
   border-radius: 0.2em;
@@ -284,7 +287,9 @@ li {
 
 
 #show-form:hover,
-#master-delete:hover {
+#master-delete:hover,
+#project-delete-all:hover,
+#create-project:hover {
   box-shadow: 0 4px 30px #8e8e8e;
   cursor: pointer;
 }

@@ -1,4 +1,4 @@
-import { Tuesday } from '../utilities/database';
+import { Tuesday, Project } from '../utilities/database';
 
 const ListItem = (obj) => {
   const listLi = Spare.create('li')
@@ -89,6 +89,24 @@ const HandleForm = (callback, updateCallback) => {
   };
 };
 
+const ProjectHandleForm = (callback) => {
+  const projectForm = Spare.sel('#project-form').element;
+  const projectName = Spare.sel('#project-name').element;
+
+  projectForm.onsubmit = (event) => {
+    event.preventDefault();
+
+    const newProject = new Project(
+      projectName.value,
+      []
+    );
+
+    try {
+      callback(newProject)
+    } catch (error) { }
+  };
+};
+
 const UpdateForm = (props, database, callback) => {
   database.find(props.id, (data) => {
     console.log(data);
@@ -109,9 +127,9 @@ const UpdateForm = (props, database, callback) => {
 };
 // Events
 
-const showModal = (elementID) => {
-  const modal = Spare.sel('#modal').element;
-  const modalClose = Spare.sel('#modal-close').element;
+const showModal = (modalID, mClose, elementID) => {
+  const modal = Spare.sel(`#${modalID}`).element;
+  const modalClose = Spare.sel(`#${mClose}`).element;
   const showForm = Spare.sel(`#${elementID}`).element;
 
   showForm.addEventListener('click', () => {
@@ -179,5 +197,5 @@ const expander = (parentID, childID) => {
 
 
 export {
-  ListItem, HandleForm, UpdateForm, showModal, masterDelete,
+  ListItem, HandleForm, ProjectHandleForm, UpdateForm, showModal, masterDelete,
 };

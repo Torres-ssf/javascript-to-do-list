@@ -2,11 +2,10 @@ import {ListItem, showModal, UpdateForm} from "./TodoComponents";
 import {todoDb, project} from  '../utilities/database'
 
 const Gui = (() => {
-    const displayAllToDos = () => {
+    const displayAllToDos = (project) => {
         const parent = Spare.sel("#todo-list");
         parent.html("");
-        todoDb.all(data => {
-            data.map((todo, index) => {
+            project._tuesdays.map((todo, index) => {
                 // update button --------------------------------
                 const updateButton = Spare.create("button")
                     .attr("class", "update")
@@ -34,10 +33,9 @@ const Gui = (() => {
                 Spare.sel(`#b-container-${index}`).append(button, updateButton);
 
                 //event setup ---------------------
-                showModal(`update-${todo.id}`);
+                showModal("modal", "modal-close", `update-${todo.id}`);
                 // ---------------------------------
             });
-        });
     };
 
     const allProjects = () =>{
@@ -47,10 +45,18 @@ const Gui = (() => {
             data.map((pro, index) => {
                 let createLi = Spare.create('li').
                     html(`
-                    <h4>${pro.name}</h4>
+                    <h4>${pro._name}</h4>
                     `).
                     attr('id', `project-${index}`).
-                    attr('data-project-id', pro.name).element;
+                    attr('data-project-id', pro._name).element;
+
+
+                createLi.onclick = (e) => {
+                    project.find(pro._name, (data) => {
+                        console.log(data._tuesdays);
+                        displayAllToDos(data);
+                    });
+                }
 
                 // Delete button --------------------------------
                 const button = Spare.create("button")
@@ -98,13 +104,20 @@ const Gui = (() => {
     };
 
     const deleteProject = props => {
-        project.destroy(props.id);
+        console.log(props._name);
+        project.destroy(props._name);
         allProjects()
     };
 
+    const deleteAllProjects = () => {
+        project.destroyAll();
+        allProjects();
+    }
+
     return {
         displayAllToDos,
-        allProjects
+        allProjects,
+        deleteAllProjects
     };
 })();
 

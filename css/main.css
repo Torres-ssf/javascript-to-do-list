@@ -44,7 +44,8 @@ li {
     width: 60%;
     margin: 6em auto;
     height: 40em; }
-    .modal .modal-content #modal-close {
+    .modal .modal-content #modal-close,
+    .modal .modal-content #project-modal-close {
       float: right;
       color: red; }
     .modal .modal-content h3 {
@@ -196,7 +197,9 @@ li {
   box-shadow: 0 4px 20px rgba(140, 140, 140, 0.12); }
 
 #show-form,
-#master-delete {
+#master-delete,
+#project-delete-all,
+#create-project {
   background-color: #9491ff;
   padding: 0.5em;
   border-radius: 0.2em;
@@ -206,6 +209,8 @@ li {
   text-shadow: 0 1px 0 grey; }
 
 #show-form:hover,
-#master-delete:hover {
+#master-delete:hover,
+#project-delete-all:hover,
+#create-project:hover {
   box-shadow: 0 4px 30px #8e8e8e;
   cursor: pointer; }

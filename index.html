@@ -13,6 +13,8 @@
     <main class="wrapper">
       <button id="master-delete">delete all todos</button>
       <button id="show-form">create todo</button>
+      <button id="project-delete-all">delete all project</button>
+      <button id="create-project">create project</button>
 
       <header class="header">
         <div class="header-left">
@@ -33,12 +35,8 @@
       <div class="todo-container">
         <ul id="todo-list"></ul>
 
-          <ul id="todo-project">
-
-          </ul>
-
+        <ul id="todo-project"></ul>
       </div>
-
 
       <div class="modal" id="modal">
         <div class="modal-content">
@@ -52,7 +50,12 @@
             <input id="description" type="text" placeholder="description" />
 
             <label for="project">Project</label>
-            <input id="project" type="text" placeholder="Project name" required/>
+            <input
+              id="project"
+              type="text"
+              placeholder="Project name"
+              required
+            />
 
             <label for="dueDate">Due Date</label>
             <input id="dueDate" type="date" />
@@ -79,6 +82,17 @@
             <button id="form-submit" type="submit">Create</button>
           </form>
           <button id="form-update">Update</button>
+        </div>
+      </div>
+
+      <div class="modal" id="project-modal">
+        <div class="model-content">
+          <button id="project-modal-close">X</button>
+          <form id="project-form" class="form">
+            <label for="project-name">Project Name</label>
+            <input id="project-name" type="text" required/>
+            <button class="main-button" type="submit">Submit</button>
+          </form>
         </div>
       </div>
     </main>
