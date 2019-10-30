@@ -32,7 +32,11 @@ const ListItem = (obj) => {
     inputCheckBox.classList.add('checkbox');
     inputCheckBox.onclick = (event) => {
       const isChecked = event.target.checked;
-      event.target.parentNode.classList.toggle('complete');
+       event.target.parentNode.
+       previousElementSibling.
+       firstElementChild.
+       classList.toggle('complete');
+
       obj.todoDb.update(obj.todo.id, { _complete: isChecked });
     };
 
