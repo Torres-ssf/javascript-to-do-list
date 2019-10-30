@@ -11,9 +11,6 @@
   </head>
   <body>
     <main class="wrapper">
-      <button id="master-delete">delete all todos</button>
-      <button id="show-form">create todo</button>
-
       <header class="header">
         <div class="header-left">
           <div class="info">
@@ -26,12 +23,27 @@
           </div>
         </div>
 
+        <div class="button-container">
+          <button class="default-button" id="create-project">
+            create project
+          </button>
+          <button class="default-button" id="project-delete-all">
+            delete all project
+          </button>
+          <button class="default-button" id="show-form">create todo</button>
+          <button class="default-button" id="master-delete">
+            delete all todos
+          </button>
+        </div>
+
         <div class="header-right">
           <img src="assets/Neon+Clock.png" alt="image" />
         </div>
       </header>
       <div class="todo-container">
         <ul id="todo-list"></ul>
+
+        <ul id="todo-project"></ul>
       </div>
 
       <div class="modal" id="modal">
@@ -44,6 +56,14 @@
 
             <label for="description">Description</label>
             <input id="description" type="text" placeholder="description" />
+
+            <label for="project">Project</label>
+            <input
+              id="project"
+              type="text"
+              placeholder="Project name"
+              required
+            />
 
             <label for="dueDate">Due Date</label>
             <input id="dueDate" type="date" />
@@ -58,11 +78,6 @@
             <label for="notes">Notes</label>
             <textarea name="" id="notes" cols="30" rows="10"></textarea>
 
-            <label class="container"
-              >One
-              <input id="complete-one" type="checkbox" checked="checked" />
-              <span class="checkmark"></span>
-            </label>
             <div>
               <input id="complete" type="checkbox" />
               <label for="Complete">Complete</label>
@@ -70,6 +85,17 @@
             <button id="form-submit" type="submit">Create</button>
           </form>
           <button id="form-update">Update</button>
+        </div>
+      </div>
+
+      <div class="modal" id="project-modal">
+        <div class="model-content">
+          <button id="project-modal-close">X</button>
+          <form id="project-form" class="form">
+            <label for="project-name">Project Name</label>
+            <input id="project-name" type="text" required />
+            <button class="main-button" type="submit">Submit</button>
+          </form>
         </div>
       </div>
     </main>

@@ -42,6 +42,36 @@ li {
   }
 }
 
+li:hover {
+  animation: animate-li 300ms forwards;
+  cursor: pointer;
+}
+
+.default-button {
+  background-color: $main-text-color;
+  padding: 0.5em;
+  border-radius: 0.2em;
+  border: 1px solid $main-text-color;
+  box-shadow: 0 4px 15px #bbbbbb;
+  color: white;
+  text-shadow: 0 1px 0 grey;
+  text-transform: capitalize;
+}
+
+.default-button:hover {
+  box-shadow: 0 4px 30px #8e8e8e;
+  cursor: pointer;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.button-container > *  {
+  margin: 6px 0;
+}
+
 .modal {
   display: none;
   background-color: rgba(128, 128, 128, 0.48);
@@ -55,7 +85,8 @@ li {
   .modal-content {
    border-radius: 1em;
     color: white;
-    #modal-close {
+    #modal-close,
+    #project-modal-close {
       float: right;
       color: red;
     }
@@ -161,6 +192,7 @@ li {
 
 .wrapper {
   width: 70%;
+  min-width: 660px;
   margin: 0 auto;
 }
 
@@ -202,10 +234,10 @@ li {
         text-shadow: 0 1px 1px grey;
         .info-icon {
           display: block;
-          background: url("../assets/delete.svg");
+          background: url("../assets/green-dot.svg")0 50%;
           background-repeat: no-repeat;
-
-          width: 1em;
+          background-size: .5em .5em;
+          width: .5em;
           margin-right: 0.5em;
         }
       }
@@ -216,6 +248,9 @@ li {
 // todo
 
 .todo-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   position: relative;
   bottom: 3em;
   background-color: rgba(255, 255, 255, 0.93);
@@ -223,8 +258,21 @@ li {
   @extend %box-shadow-con;
   width: 95%;
   margin: 0 auto;
-  height: 37.5em;
+  height: 40.5em;
   overflow-y: auto;
+}
+
+#todo-list{
+  width: 60%;
+}
+ #todo-project{
+  width: 30%;
+   overflow-y: auto ;
+   height: 100%;
+   color: $main-text-color;
+   font-weight: bold;
+   text-align: center;
+   text-transform: capitalize;
 }
 
 %border-r {
@@ -238,18 +286,12 @@ li {
   border-radius: $value#{em};
 }
 
-#show-form,
-#master-delete {
-  background-color: $main-text-color;
-  padding: 0.5em;
-  border-radius: 0.2em;
-  border: 1px solid $main-text-color;
-  box-shadow: 0 4px 15px #bbbbbb;
-  color: white;
-  text-shadow: 0 1px 0 grey;
-}
-#show-form:hover,
-#master-delete:hover {
-  box-shadow: 0 4px 30px #8e8e8e;
-  cursor: pointer;
+@keyframes animate-li {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.06);
+  }
 }

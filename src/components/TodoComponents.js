@@ -1,4 +1,4 @@
-import { Tuesday } from '../utilities/database';
+import { Tuesday, Project } from '../utilities/database';
 
 const ListItem = (obj) => {
   const listLi = Spare.create('li')
@@ -16,8 +16,15 @@ const ListItem = (obj) => {
             <article>Notes: ${obj.todo._notes}</article>
           </div>`,
     )
-    .attr('data-todo-index', obj.index)
-    .attr('id', `list-item-${obj.index}`).element;
+    .attr('data-todo-index', obj.todo.id)
+    .attr('id', `list-item-${obj.index}`).
+     attr('draggable', 'true').element
+
+     listLi.ondragstart = (event) => {
+       console.log(event.target.id);
+       event.dataTransfer.setData('text/plain', event.target.id)
+
+     };
 
   // checkbox input ------------------------------------
   setTimeout(() => {
@@ -25,7 +32,11 @@ const ListItem = (obj) => {
     inputCheckBox.classList.add('checkbox');
     inputCheckBox.onclick = (event) => {
       const isChecked = event.target.checked;
-      event.target.parentNode.classList.toggle('complete');
+       event.target.parentNode.
+       previousElementSibling.
+       firstElementChild.
+       classList.toggle('complete');
+
       obj.todoDb.update(obj.todo.id, { _complete: isChecked });
     };
 
@@ -49,6 +60,7 @@ const HandleForm = (callback, updateCallback) => {
   const formValues = () => {
     const title = Spare.sel('#title').element.value;
     const description = Spare.sel('#description').element.value;
+    const project = Spare.sel('#project').element.value;
     let priority = Spare.sel('#priority').element.value;
     const dueDate = Spare.sel('#dueDate').element.value;
     const notes = Spare.sel('#notes').element.value;
@@ -63,6 +75,7 @@ const HandleForm = (callback, updateCallback) => {
       dueDate,
       notes,
       complete,
+      project,
     );
     return newTodo;
   };
@@ -80,18 +93,34 @@ const HandleForm = (callback, updateCallback) => {
   };
 };
 
+const ProjectHandleForm = (callback) => {
+  const projectForm = Spare.sel('#project-form').element;
+  const projectName = Spare.sel('#project-name').element;
+
+  projectForm.onsubmit = (event) => {
+    event.preventDefault();
+
+    const newProject = new Project(
+      projectName.value,
+      []
+    );
+
+    try {
+      callback(newProject)
+    } catch (error) { }
+  };
+};
+
 const UpdateForm = (props, database, callback) => {
-  database.find(props.id, (data) => {
-    console.log(data);
-  });
+
   database.find(props.id, (data) => {
     Spare.sel('#title').element.value = data._title;
     Spare.sel('#description').element.value = data._description;
+    Spare.sel('#project').element.value = data._project_id;
     Spare.sel('#priority').element.value = data._priority;
     Spare.sel('#dueDate').element.value = data._dueDate;
     Spare.sel('#notes').element.value = data._notes;
     Spare.sel('#complete').element.checked = data._complete;
-
     try {
       callback();
     } catch (error) { }
@@ -99,9 +128,9 @@ const UpdateForm = (props, database, callback) => {
 };
 // Events
 
-const showModal = (elementID) => {
-  const modal = Spare.sel('#modal').element;
-  const modalClose = Spare.sel('#modal-close').element;
+const showModal = (modalID, mClose, elementID) => {
+  const modal = Spare.sel(`#${modalID}`).element;
+  const modalClose = Spare.sel(`#${mClose}`).element;
   const showForm = Spare.sel(`#${elementID}`).element;
 
   showForm.addEventListener('click', () => {
@@ -164,10 +193,8 @@ const expander = (parentID, childID) => {
   parent.addEventListener('click', () => {
     child.classList.toggle('hidden')
   })
-}
-
-
+};
 
 export {
-  ListItem, HandleForm, UpdateForm, showModal, masterDelete,
+  ListItem, HandleForm, ProjectHandleForm, UpdateForm, showModal, masterDelete,
 };

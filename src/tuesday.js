@@ -1,42 +1,48 @@
 import spare from "sparetime.js";
 import Gui from  './components/Gui'
-import {todoDb} from "./utilities/database";
+import {todoDb, project} from "./utilities/database";
 import {
   HandleForm,
   showModal,
-  masterDelete
+  masterDelete,
+  ProjectHandleForm
 } from "./components/TodoComponents";
 
 spare();
 
-
-
-
 // Setup ----------------------------------------------------------
 
 const tuesday = () => {
-
-  Gui.displayAllToDos();
+  Gui.allProjects();
 
   HandleForm(
     data => {
       todoDb.create(data);
-      Gui.displayAllToDos();
     },
     updateData => {
       todoDb.update(Number(sessionStorage.getItem("todo-id")), updateData);
-      Gui.displayAllToDos();
     }
   );
 
-  showModal("show-form");
+  ProjectHandleForm(
+    data => {
+      project.create(data);
+      Gui.allProjects();
+    }
+  );
+
+  showModal("modal", "modal-close", "show-form");
+  showModal("project-modal", "project-modal-close", "create-project")
 
   masterDelete(() => {
     todoDb.destroyAll(0);
     setTimeout(() => {
-      Gui.displayAllToDos();
     }, 1);
   });
+
+  Spare.sel('#project-delete-all').element.onclick = () => {
+    Gui.deleteAllProjects();
+  }
 
 }
 

@@ -27,6 +27,31 @@ li {
   li h4 {
     margin: 0; }
 
+li:hover {
+  animation: animate-li 300ms forwards;
+  cursor: pointer; }
+
+.default-button {
+  background-color: #9491ff;
+  padding: 0.5em;
+  border-radius: 0.2em;
+  border: 1px solid #9491ff;
+  box-shadow: 0 4px 15px #bbbbbb;
+  color: white;
+  text-shadow: 0 1px 0 grey;
+  text-transform: capitalize; }
+
+.default-button:hover {
+  box-shadow: 0 4px 30px #8e8e8e;
+  cursor: pointer; }
+
+.button-container {
+  display: flex;
+  flex-direction: column; }
+
+.button-container > * {
+  margin: 6px 0; }
+
 .modal {
   display: none;
   background-color: rgba(128, 128, 128, 0.48);
@@ -44,7 +69,8 @@ li {
     width: 60%;
     margin: 6em auto;
     height: 40em; }
-    .modal .modal-content #modal-close {
+    .modal .modal-content #modal-close,
+    .modal .modal-content #project-modal-close {
       float: right;
       color: red; }
     .modal .modal-content h3 {
@@ -126,6 +152,7 @@ li {
 
 .wrapper {
   width: 70%;
+  min-width: 660px;
   margin: 0 auto; }
 
 .header {
@@ -160,19 +187,35 @@ li {
         text-shadow: 0 1px 1px grey; }
         .header .header-left .info p .info-icon {
           display: block;
-          background: url("../assets/delete.svg");
+          background: url("../assets/green-dot.svg") 0 50%;
           background-repeat: no-repeat;
-          width: 1em;
+          background-size: .5em .5em;
+          width: .5em;
           margin-right: 0.5em; }
 
 .todo-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   position: relative;
   bottom: 3em;
   background-color: rgba(255, 255, 255, 0.93);
   width: 95%;
   margin: 0 auto;
-  height: 37.5em;
+  height: 40.5em;
   overflow-y: auto; }
+
+#todo-list {
+  width: 60%; }
+
+#todo-project {
+  width: 30%;
+  overflow-y: auto;
+  height: 100%;
+  color: #9491ff;
+  font-weight: bold;
+  text-align: center;
+  text-transform: capitalize; }
 
 .todo-container {
   border-radius: 0.5em; }
@@ -180,17 +223,8 @@ li {
 .todo-container {
   box-shadow: 0 4px 20px rgba(140, 140, 140, 0.12); }
 
-#show-form,
-#master-delete {
-  background-color: #9491ff;
-  padding: 0.5em;
-  border-radius: 0.2em;
-  border: 1px solid #9491ff;
-  box-shadow: 0 4px 15px #bbbbbb;
-  color: white;
-  text-shadow: 0 1px 0 grey; }
-
-#show-form:hover,
-#master-delete:hover {
-  box-shadow: 0 4px 30px #8e8e8e;
-  cursor: pointer; }
+@keyframes animate-li {
+  0% {
+    transform: scale(1); }
+  100% {
+    transform: scale(1.06); } }
