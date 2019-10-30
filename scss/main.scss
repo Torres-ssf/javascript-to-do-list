@@ -42,6 +42,11 @@ li {
   }
 }
 
+li:hover {
+  animation: animate-li 300ms forwards;
+  cursor: pointer;
+}
+
 .default-button {
   background-color: $main-text-color;
   padding: 0.5em;
@@ -279,4 +284,14 @@ li {
 
 @mixin border($value) {
   border-radius: $value#{em};
+}
+
+@keyframes animate-li {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.06);
+  }
 }
