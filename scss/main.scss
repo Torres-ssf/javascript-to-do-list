@@ -42,6 +42,31 @@ li {
   }
 }
 
+.default-button {
+  background-color: $main-text-color;
+  padding: 0.5em;
+  border-radius: 0.2em;
+  border: 1px solid $main-text-color;
+  box-shadow: 0 4px 15px #bbbbbb;
+  color: white;
+  text-shadow: 0 1px 0 grey;
+  text-transform: capitalize;
+}
+
+.default-button:hover {
+  box-shadow: 0 4px 30px #8e8e8e;
+  cursor: pointer;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.button-container > *  {
+  margin: 6px 0;
+}
+
 .modal {
   display: none;
   background-color: rgba(128, 128, 128, 0.48);
@@ -102,11 +127,6 @@ li {
       textarea {
         height: 5rem;
       }
-      // div {
-      //   input {
-      //     height: 1em;
-      //   }
-      // }
     }
     #form-update, #form-submit{
       margin-top: 1em;
@@ -143,18 +163,6 @@ li {
   display: none;
 }
 
-.checkbox {
-  // content: '';
-  // background: #fff;
-  // border: 2px solid #ddd;
-  // display: inline-block;
-  // vertical-align: middle;
-  // width: 20px;
-  // height: 20px;
-  // padding: 2px;
-  // margin-right: 10px;
-}
-
 .delete {
   background: url(../assets/delete.svg);
   background-repeat: no-repeat;
@@ -179,6 +187,7 @@ li {
 
 .wrapper {
   width: 70%;
+  min-width: 660px;
   margin: 0 auto;
 }
 
@@ -271,26 +280,3 @@ li {
 @mixin border($value) {
   border-radius: $value#{em};
 }
-
-#show-form,
-#master-delete,
-#project-delete-all,
-#create-project {
-  background-color: $main-text-color;
-  padding: 0.5em;
-  border-radius: 0.2em;
-  border: 1px solid $main-text-color;
-  box-shadow: 0 4px 15px #bbbbbb;
-  color: white;
-  text-shadow: 0 1px 0 grey;
-}
-
-
-#show-form:hover,
-#master-delete:hover,
-#project-delete-all:hover,
-#create-project:hover {
-  box-shadow: 0 4px 30px #8e8e8e;
-  cursor: pointer;
-}
-

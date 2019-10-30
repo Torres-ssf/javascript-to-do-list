@@ -11,11 +11,6 @@
   </head>
   <body>
     <main class="wrapper">
-      <button id="master-delete">delete all todos</button>
-      <button id="show-form">create todo</button>
-      <button id="project-delete-all">delete all project</button>
-      <button id="create-project">create project</button>
-
       <header class="header">
         <div class="header-left">
           <div class="info">
@@ -26,6 +21,19 @@
             <p><span class="info-icon"></span> New York</p>
             <p><span class="info-icon"></span>Notifications</p>
           </div>
+        </div>
+
+        <div class="button-container">
+          <button class="default-button" id="create-project">
+            create project
+          </button>
+          <button class="default-button" id="project-delete-all">
+            delete all project
+          </button>
+          <button class="default-button" id="show-form">create todo</button>
+          <button class="default-button" id="master-delete">
+            delete all todos
+          </button>
         </div>
 
         <div class="header-right">
@@ -70,11 +78,6 @@
             <label for="notes">Notes</label>
             <textarea name="" id="notes" cols="30" rows="10"></textarea>
 
-            <label class="container"
-              >One
-              <input id="complete-one" type="checkbox" checked="checked" />
-              <span class="checkmark"></span>
-            </label>
             <div>
               <input id="complete" type="checkbox" />
               <label for="Complete">Complete</label>
@@ -90,7 +93,7 @@
           <button id="project-modal-close">X</button>
           <form id="project-form" class="form">
             <label for="project-name">Project Name</label>
-            <input id="project-name" type="text" required/>
+            <input id="project-name" type="text" required />
             <button class="main-button" type="submit">Submit</button>
           </form>
         </div>

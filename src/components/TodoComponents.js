@@ -113,9 +113,6 @@ const ProjectHandleForm = (callback) => {
 
 const UpdateForm = (props, database, callback) => {
 
-  // database.find(props.id, (data) => {
-  //   console.log(data);
-  // });
   database.find(props.id, (data) => {
     Spare.sel('#title').element.value = data._title;
     Spare.sel('#description').element.value = data._description;
@@ -197,8 +194,6 @@ const expander = (parentID, childID) => {
     child.classList.toggle('hidden')
   })
 };
-
-
 
 export {
   ListItem, HandleForm, ProjectHandleForm, UpdateForm, showModal, masterDelete,
