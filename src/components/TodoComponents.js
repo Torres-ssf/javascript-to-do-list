@@ -21,7 +21,6 @@ const ListItem = (obj) => {
      attr('draggable', 'true').element
 
      listLi.ondragstart = (event) => {
-       console.log(event.target.id);
        event.dataTransfer.setData('text/plain', event.target.id)
 
      };
@@ -162,7 +161,6 @@ const prioritySwitcher = (value, callback) => {
   const lowValue = value.toLowerCase();
   function TypeError() {
     this.value = 'type error message';
-    console.log(this.value);
   }
   const type = {
     high: 'high',

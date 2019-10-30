@@ -108,7 +108,6 @@ const Gui = (() => {
     };
 
     const deleteProject = props => {
-        console.log(props._name);
         project.destroy(props._name);
         allProjects()
     };
