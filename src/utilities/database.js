@@ -3,7 +3,6 @@ import tuesday from "../tuesday";
 export class Project {
 	constructor(name, tuesdays) {
 		this._name = name;
-		this._tuesdays = tuesdays;
 	}
 
 	get name() {
@@ -12,14 +11,6 @@ export class Project {
 
 	set name(value) {
 		this._name = value;
-	}
-
-	get tuesdays() {
-		return this._tuesdays;
-	}
-
-	set tuesdays(value) {
-		this._tuesdays = value;
 	}
 }
 
@@ -103,7 +94,6 @@ const list = new Tuesday(
 
 const testProject = new Project(
 	"Default-Project",
-	[list]
 );
 
 // Database setup ----------------------
@@ -119,7 +109,7 @@ todoDb.setup(
 	"dueDate",
 	"notes",
 	"complete",
-	"&project_id"
+	"project_id"
 );
 // ------------------------------
 
@@ -127,14 +117,9 @@ todoDb.setup(
 
 //todoDb.create(list);
 
-// let test = todoDb.query().where('_project_id').equals('Default-Project');
-// test.toArray().forEach(e => console.log(e))
-
 // ------------------------------------------------
 
 const project = new IspireDb();
-project.setup('project', 1, '_name', '_tuesdays');
+project.setup('project', 1, '_name');
 project.create(testProject);
-console.log(testProject);
-
 export { todoDb, project }

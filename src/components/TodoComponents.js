@@ -16,8 +16,7 @@ const ListItem = (obj) => {
             <article>Notes: ${obj.todo._notes}</article>
           </div>`,
     )
-    .attr('data-todo-index', obj.index)
-    .attr('data-todo-project', obj.todo._project_id)
+    .attr('data-todo-index', obj.todo.id)
     .attr('id', `list-item-${obj.index}`).
      attr('draggable', 'true').element
 
@@ -109,18 +108,18 @@ const ProjectHandleForm = (callback) => {
 };
 
 const UpdateForm = (props, database, callback) => {
-  database.find(props.id, (data) => {
-    console.log(data);
-  });
+
+  // database.find(props.id, (data) => {
+  //   console.log(data);
+  // });
   database.find(props.id, (data) => {
     Spare.sel('#title').element.value = data._title;
     Spare.sel('#description').element.value = data._description;
-    Spare.sel('#project').element.checked = data._project_id;
+    Spare.sel('#project').element.value = data._project_id;
     Spare.sel('#priority').element.value = data._priority;
     Spare.sel('#dueDate').element.value = data._dueDate;
     Spare.sel('#notes').element.value = data._notes;
     Spare.sel('#complete').element.checked = data._complete;
-
     try {
       callback();
     } catch (error) { }

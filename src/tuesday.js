@@ -1,6 +1,6 @@
 import spare from "sparetime.js";
 import Gui from  './components/Gui'
-import {todoDb, project, Project} from "./utilities/database";
+import {todoDb, project} from "./utilities/database";
 import {
   HandleForm,
   showModal,
@@ -17,23 +17,13 @@ spare();
 
 const tuesday = () => {
   Gui.allProjects();
-  // Gui.displayAllToDos();
 
   HandleForm(
     data => {
       todoDb.create(data);
-
-      project.find(data._project_id, proData => {
-        const currentTodos = proData._tuesdays;
-        currentTodos.push(data);
-        project.update(data._project_id,{_tuesdays:currentTodos})
-      })
-
-      // Gui.displayAllToDos();
     },
     updateData => {
       todoDb.update(Number(sessionStorage.getItem("todo-id")), updateData);
-      // Gui.displayAllToDos();
     }
   );
 
@@ -42,7 +32,7 @@ const tuesday = () => {
       project.create(data);
       Gui.allProjects();
     }
-  )
+  );
 
   showModal("modal", "modal-close", "show-form");
   showModal("project-modal", "project-modal-close", "create-project")
@@ -50,7 +40,6 @@ const tuesday = () => {
   masterDelete(() => {
     todoDb.destroyAll(0);
     setTimeout(() => {
-      // Gui.displayAllToDos();
     }, 1);
   });
 
