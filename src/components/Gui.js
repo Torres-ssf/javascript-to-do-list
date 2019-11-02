@@ -3,11 +3,15 @@ import {todoDb, project} from  '../utilities/database'
 
 const Gui = (() => {
     const displayAllToDos = (projectName) => {
+        if (projectName !== undefined){
+            sessionStorage.setItem('projectName',projectName);
+        }
+        const pName = sessionStorage.getItem('projectName');
         const parent = Spare.sel("#todo-list");
         parent.html("");
          todoDb.all( data => {
         data.map((todo, index) => {
-            if (todo._project_id === projectName) {
+            if (todo._project_id === pName) {
                 const hold = todo;
                 // update button --------------------------------
                 const updateButton = Spare.create("button")

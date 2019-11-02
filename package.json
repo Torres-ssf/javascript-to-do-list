@@ -32,7 +32,7 @@
     "webpack-cli": "^3.3.9"
   },
   "dependencies": {
-    "ispiredb.js": "^1.0.3",
+    "ispiredb.js": "^1.0.4",
     "sparetime.js": "^1.0.5"
   }
 }

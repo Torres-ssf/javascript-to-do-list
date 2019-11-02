@@ -36,13 +36,13 @@ li:hover {
   padding: 0.5em;
   border-radius: 0.2em;
   border: 1px solid #9491ff;
-  box-shadow: 0 4px 15px #bbbbbb;
+  box-shadow: 0 4px 15px #1e1e1e;
   color: white;
   text-shadow: 0 1px 0 grey;
   text-transform: capitalize; }
 
 .default-button:hover {
-  box-shadow: 0 4px 30px #8e8e8e;
+  box-shadow: 0 4px 30px #6e2773;
   cursor: pointer; }
 
 .button-container {

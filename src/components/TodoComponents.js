@@ -111,8 +111,9 @@ const ProjectHandleForm = (callback) => {
 };
 
 const UpdateForm = (props, database, callback) => {
-
+  console.log(props.id)
   database.find(props.id, (data) => {
+    console.log(data)
     Spare.sel('#title').element.value = data._title;
     Spare.sel('#description').element.value = data._description;
     Spare.sel('#project').element.value = data._project_id;
