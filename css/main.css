@@ -106,12 +106,19 @@ li:hover {
         box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); }
       .modal .modal-content .form textarea {
         height: 5rem; }
-    .modal .modal-content #form-update, .modal .modal-content #form-submit {
+    .modal .modal-content .form-submit, .modal .modal-content .form-update {
       margin-top: 1em;
       font-size: 1.2em;
       font-weight: bold; }
-    .modal .modal-content #form-update {
+    .modal .modal-content .form-update {
       width: 60%; }
+
+.project-modal .modal-content {
+  height: 15em; }
+  .project-modal .modal-content .form {
+    height: min-content; }
+    .project-modal .modal-content .form input[type="text"] {
+      height: min-content; }
 
 .complete {
   text-decoration: line-through;

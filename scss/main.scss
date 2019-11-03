@@ -133,13 +133,28 @@ li:hover {
         height: 5rem;
       }
     }
-    #form-update, #form-submit{
+
+    .form-submit, .form-update {
       margin-top: 1em;
       font-size: 1.2em;
       font-weight: bold;
     }
-    #form-update{
+    .form-update {
       width: 60%;
+    }
+  }
+}
+
+.project-modal {
+  .modal-content {
+    height: 15em;
+
+    .form {
+      height: min-content;
+
+      input[type="text"] {
+        height: min-content;
+      }
     }
   }
 }
