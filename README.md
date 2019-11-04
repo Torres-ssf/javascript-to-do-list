@@ -26,7 +26,12 @@ npm install
 ```
 Open the index.html file in your browser
 ```
-
+## Features 
+* Create Project
+* Create Todos
+* Add Todos to Project
+* Crud functionality for Todos
+* Drag and drop Todos on project to update project with new todo.
 
 
 ## Built With

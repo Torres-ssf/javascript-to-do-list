@@ -20,7 +20,7 @@ const tuesday = () => {
       todoDb.create(data);
     },
     updateData => {
-      todoDb.update(Number(sessionStorage.getItem("todo-id")), updateData);
+      todoDb.update(Number(sessionStorage.getItem('todo-id')), updateData);
     }
   );
 

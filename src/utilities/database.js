@@ -89,7 +89,7 @@ const list = new Tuesday(
 	new Date(),
 	"Remember to finish Microverse",
 	false,
-     'Default-Project',
+     'D',
 );
 
 const testProject = new Project(
@@ -115,7 +115,7 @@ todoDb.setup(
 
 // Db dummy test data -------------------------------
 
-// todoDb.create(list);
+todoDb.create(list);
 
 // ------------------------------------------------
 

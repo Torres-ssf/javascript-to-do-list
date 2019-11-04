@@ -21,8 +21,9 @@ const Gui = (() => {
                     // .html("update")
                     .element;
                 updateButton.onclick = (event) => {
-                    UpdateForm(todo, todoDb);
                     sessionStorage.setItem("todo-id", todo.id);
+                    UpdateForm(todo, todoDb);
+
                 };
                 // ---------------------------------------------------
 
@@ -62,7 +63,7 @@ const Gui = (() => {
 
                 createLi.onclick = (e) => {
                         displayAllToDos(pro._name);
-                }
+                };
 
                 // Delete button --------------------------------
                 const button = Spare.create("button")
