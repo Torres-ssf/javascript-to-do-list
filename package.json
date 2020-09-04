@@ -26,7 +26,7 @@
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",
     "live-server": "^1.2.1",
-    "node-sass": "^4.12.0",
+    "node-sass": "^4.13.1",
     "nodemon": "^1.19.3",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.9"
